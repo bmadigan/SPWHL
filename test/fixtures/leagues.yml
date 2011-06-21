@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  season_id: 1
+  is_house_league: false
+
+two:
+  name: MyString
+  season_id: 1
+  is_house_league: false

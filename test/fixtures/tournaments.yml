@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  season_id: 1
+  page_content: 1
+  director_id: 1
+
+two:
+  name: MyString
+  season_id: 1
+  page_content: 1
+  director_id: 1

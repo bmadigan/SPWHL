@@ -1,0 +1,24 @@
+<%= form_for @roster do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :team_id %><br />
+    <%= f.text_field :team_id %>
+  </p>
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :jersey_number %><br />
+    <%= f.text_field :jersey_number %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

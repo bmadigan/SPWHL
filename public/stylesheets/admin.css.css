@@ -1,0 +1,193 @@
+body {
+  background-color: #f9f9f9;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px; }
+
+a {
+  color: blue; }
+
+a img {
+  border: none; }
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden; }
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px; }
+
+#topbar {
+  margin: 0 0px;
+  background-color: #242424;
+  color: #fff;
+  padding: 8px; }
+
+#mainnav {
+  background-color: #d3d3d3;
+  padding: 12px; }
+  #mainnav a {
+    color: #222; }
+  #mainnav a:hover {
+    color: #888; }
+  #mainnav ul {
+    margin: 1px;
+    list-style-type: none; }
+  #mainnav li {
+    display: inline;
+    margin: 0 10px 0 5px; }
+
+#flash_notice,
+#flash_error,
+#flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0; }
+
+#flash_notice {
+  background-color: #ccffcc;
+  border: solid 1px #66cc66; }
+
+#flash_error,
+#flash_alert {
+  background-color: #ffcccc;
+  border: solid 1px #cc6666; }
+
+.fieldWithErrors {
+  display: inline; }
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #cf0000;
+  padding: 0;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px; }
+
+.error_messages h2 {
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: #cc0000;
+  color: white; }
+
+.error_messages p {
+  margin: 8px 10px; }
+
+.error_messages ul {
+  margin: 0; }
+
+.simple_form label {
+  float: left;
+  width: 240px;
+  text-align: right;
+  margin: 2px 10px;
+  vertical-align: top; }
+.simple_form .text {
+  vertical-align: top;
+  text-align: left;
+  margin: 2px 0 12px 0;
+  width: 100%; }
+.simple_form div.input {
+  margin-bottom: 10px;
+  vertical-align: top; }
+.simple_form div.input {
+  margin-bottom: 10px;
+  vertical-align: top; }
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  margin-right: 20px;
+  text-align: right; }
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0; }
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px; }
+.simple_form .error {
+  clear: left;
+  margin-left: 240px;
+  font-size: 12px;
+  color: #D00;
+  display: block; }
+.simple_form .hint {
+  clear: left;
+  margin-left: 240px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic; }
+
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px; }
+
+.ui-timepicker-div dl {
+  text-align: left; }
+
+.ui-timepicker-div dl dt {
+  height: 25px; }
+
+.ui-timepicker-div dl dd {
+  margin: -25px 10px 10px 65px; }
+
+.ui-timepicker-div td {
+  font-size: 90%; }
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%; }
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999; }
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%; }
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px; }
+
+#calendar .notmonth {
+  color: #CCC; }
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center; }
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999; }
+
+#calendar .today {
+  background-color: #D7F2FF; }
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none; }
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center; }

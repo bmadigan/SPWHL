@@ -1,0 +1,23 @@
+<% title "Tournaments" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Season</th>
+    <th>Page Content</th>
+    <th>Director</th>
+  </tr>
+  <% for tournament in @tournaments %>
+    <tr>
+      <td><%= tournament.name %></td>
+      <td><%= tournament.season_id %></td>
+      <td><%= tournament.page_content %></td>
+      <td><%= tournament.director_id %></td>
+      <td><%= link_to "Show", tournament %></td>
+      <td><%= link_to "Edit", edit_tournament_path(tournament) %></td>
+      <td><%= link_to "Destroy", tournament, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Tournament", new_tournament_path %></p>

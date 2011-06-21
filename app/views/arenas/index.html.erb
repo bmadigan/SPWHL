@@ -1,0 +1,17 @@
+<% title "Arenas" %>
+
+<table>
+  <tr>
+    <th>Arena Name</th>
+  </tr>
+  <% for arena in @arenas %>
+    <tr>
+      <td><%= arena.arena_name %></td>
+      <td><%= link_to "Show", arena %></td>
+      <td><%= link_to "Edit", edit_arena_path(arena) %></td>
+      <td><%= link_to "Destroy", arena, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Arena", new_arena_path %></p>

@@ -1,0 +1,23 @@
+<% title "Teams" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>League</th>
+    <th>Manager</th>
+    <th>Team Page Content</th>
+  </tr>
+  <% for team in @teams %>
+    <tr>
+      <td><%= team.name %></td>
+      <td><%= team.league_id %></td>
+      <td><%= team.manager_id %></td>
+      <td><%= team.team_page_content %></td>
+      <td><%= link_to "Show", team %></td>
+      <td><%= link_to "Edit", edit_team_path(team) %></td>
+      <td><%= link_to "Destroy", team, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Team", new_team_path %></p>

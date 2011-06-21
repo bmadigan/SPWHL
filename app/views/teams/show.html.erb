@@ -1,0 +1,24 @@
+<% title "Team" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+<p>
+  <strong>League:</strong>
+  <%= @team.league_id %>
+</p>
+<p>
+  <strong>Manager:</strong>
+  <%= @team.manager_id %>
+</p>
+<p>
+  <strong>Team Page Content:</strong>
+  <%= @team.team_page_content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_team_path(@team) %> |
+  <%= link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", teams_path %>
+</p>

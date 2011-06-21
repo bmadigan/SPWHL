@@ -32,4 +32,10 @@ gem 'sqlite3'
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
+gem "sass"
 gem "jquery-rails"
+gem "simple_form"
+gem 'event-calendar', :require => 'event_calendar'
+
+gem "nifty-generators", :group => :development
+#gem "mocha", :group => :test

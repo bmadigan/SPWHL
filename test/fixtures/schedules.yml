@@ -1,0 +1,23 @@
+one:
+  league_id: 
+  home_team_id: 
+  away_team_id: 
+  is_game: 
+  is_draft_game: 
+  is_league_run: 
+  team_event_name: 
+  scheduled_date: 
+  is_tournament: 
+  tournament_id: 1
+
+two:
+  league_id: 
+  home_team_id: 
+  away_team_id: 
+  is_game: 
+  is_draft_game: 
+  is_league_run: 
+  team_event_name: 
+  scheduled_date: 
+  is_tournament: 
+  tournament_id: 1

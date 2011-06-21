@@ -1,0 +1,21 @@
+<% title "Leagues" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Season</th>
+    <th>Is House League</th>
+  </tr>
+  <% for league in @leagues %>
+    <tr>
+      <td><%= league.name %></td>
+      <td><%= league.season_id %></td>
+      <td><%= league.is_house_league %></td>
+      <td><%= link_to "Show", league %></td>
+      <td><%= link_to "Edit", edit_league_path(league) %></td>
+      <td><%= link_to "Destroy", league, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New League", new_league_path %></p>

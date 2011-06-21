@@ -1,0 +1,24 @@
+<% title "Tournament" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tournament.name %>
+</p>
+<p>
+  <strong>Season:</strong>
+  <%= @tournament.season_id %>
+</p>
+<p>
+  <strong>Page Content:</strong>
+  <%= @tournament.page_content %>
+</p>
+<p>
+  <strong>Director:</strong>
+  <%= @tournament.director_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_tournament_path(@tournament) %> |
+  <%= link_to "Destroy", @tournament, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tournaments_path %>
+</p>

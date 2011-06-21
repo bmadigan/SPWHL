@@ -1,0 +1,22 @@
+
+= simple_form_for @schedule do |f| 
+  = f.error_messages
+
+  = f.association :league, :include_blank => false
+  = f.association :home_team, :include_blank => false
+  = f.association :away_team, :include_blank => false
+  = f.input :arena, :include_blank => false, :label => 'Choose Arena', :collection => [['Soo Peewee Arena', 'SPW'], ['John Rhodes One', 'JR1'], ['John Rhodes Two', 'JR2'], ['Rankin Arena', 'RNK'], ['Essar Centre', 'ESSR'], ['McMeeken Arena', 'MCK'], ['Not Applicable', 'NA']]
+
+  = f.input :is_game, :label => 'This is a Scheduled Game'
+  = f.input :is_draft_game, :label => 'This is a Draft Game'
+  = f.input :is_league_run, :label => 'League Scheduled Item'
+  = f.input :scheduled_date, :input_html => { :id => 'scheduled_date_picker' }, :as => :string
+
+  %h3 Tournament Options
+  = f.input :is_tournament, :label => 'This is a Tournament Game'
+  = f.input :tournament_id, :label => 'Select Which Tournament'
+
+  %h3 Team Function
+  = f.input :team_event_name
+
+  = f.button :submit

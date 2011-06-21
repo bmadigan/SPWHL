@@ -1,0 +1,12 @@
+<% title "Arena" %>
+
+<p>
+  <strong>Arena Name:</strong>
+  <%= @arena.arena_name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_arena_path(@arena) %> |
+  <%= link_to "Destroy", @arena, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", arenas_path %>
+</p>

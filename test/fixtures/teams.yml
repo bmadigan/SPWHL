@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  league_id: 1
+  manager_id: 1
+  team_page_content: MyText
+
+two:
+  name: MyString
+  league_id: 1
+  manager_id: 1
+  team_page_content: MyText

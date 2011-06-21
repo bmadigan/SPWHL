@@ -1,0 +1,48 @@
+<% title "Schedules" %>
+
+<div id="calendar">
+	<%= calendar_for(@schedules) do |s| %>
+	  <%= s.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+	  <%= s.day do |day, schedules| %>
+	    <%= day.day %>
+	    <% schedules.each do |sch| %>
+	      <%= h(sch.home_team_id) %>
+	    <% end %>
+	  <% end %>
+	<% end %>
+</div>
+<hr>
+
+<table>
+  <tr>
+    <th>League</th>
+    <th>Home Team</th>
+    <th>Away Team</th>
+    <th>Is Game</th>
+    <th>Is Draft Game</th>
+    <th>Is League Run</th>
+    <th>Team Event Name</th>
+    <th>Scheduled Date</th>
+    <th>Is Tournament</th>
+    <th>Tournament</th>
+  </tr>
+  <% for schedule in @schedules %>
+    <tr>
+      <td><%= schedule.league_id %></td>
+      <td><%= schedule.home_team_id %></td>
+      <td><%= schedule.away_team_id %></td>
+      <td><%= schedule.is_game %></td>
+      <td><%= schedule.is_draft_game %></td>
+      <td><%= schedule.is_league_run %></td>
+      <td><%= schedule.team_event_name %></td>
+      <td><%= schedule.scheduled_date %></td>
+      <td><%= schedule.is_tournament %></td>
+      <td><%= schedule.tournament_id %></td>
+      <td><%= link_to "Show", schedule %></td>
+      <td><%= link_to "Edit", edit_schedule_path(schedule) %></td>
+      <td><%= link_to "Destroy", schedule, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Schedule", new_schedule_path %></p>

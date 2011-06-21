@@ -1,0 +1,48 @@
+<% title "Schedule" %>
+
+<p>
+  <strong>League:</strong>
+  <%= @schedule.league_id %>
+</p>
+<p>
+  <strong>Home Team:</strong>
+  <%= @schedule.home_team_id %>
+</p>
+<p>
+  <strong>Away Team:</strong>
+  <%= @schedule.away_team_id %>
+</p>
+<p>
+  <strong>Is Game:</strong>
+  <%= @schedule.is_game %>
+</p>
+<p>
+  <strong>Is Draft Game:</strong>
+  <%= @schedule.is_draft_game %>
+</p>
+<p>
+  <strong>Is League Run:</strong>
+  <%= @schedule.is_league_run %>
+</p>
+<p>
+  <strong>Team Event Name:</strong>
+  <%= @schedule.team_event_name %>
+</p>
+<p>
+  <strong>Scheduled Date:</strong>
+  <%= @schedule.scheduled_date %>
+</p>
+<p>
+  <strong>Is Tournament:</strong>
+  <%= @schedule.is_tournament %>
+</p>
+<p>
+  <strong>Tournament:</strong>
+  <%= @schedule.tournament_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_schedule_path(@schedule) %> |
+  <%= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", schedules_path %>
+</p>

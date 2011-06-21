@@ -1,0 +1,20 @@
+<%= form_for @tournament do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :season_id %><br />
+    <%= f.text_field :season_id %>
+  </p>
+  <p>
+    <%= f.label :page_content %><br />
+    <%= f.text_field :page_content %>
+  </p>
+  <p>
+    <%= f.label :director_id %><br />
+    <%= f.text_field :director_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

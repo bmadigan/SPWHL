@@ -1,0 +1,28 @@
+<% title "Roster" %>
+
+<p>
+  <strong>Team:</strong>
+  <%= @roster.team_id %>
+</p>
+<p>
+  <strong>First Name:</strong>
+  <%= @roster.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @roster.last_name %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%= @roster.position %>
+</p>
+<p>
+  <strong>Jersey Number:</strong>
+  <%= @roster.jersey_number %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_roster_path(@roster) %> |
+  <%= link_to "Destroy", @roster, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", rosters_path %>
+</p>
