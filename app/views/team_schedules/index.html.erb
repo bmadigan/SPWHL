@@ -1,0 +1,28 @@
+<% title "#{Team.name} - Team Schedules" %>
+
+<% if @team_schedules %>
+	<table class="admin-tbl" cellspacing="0">
+	  <tr>
+	    <th width="180">Event Date</th>
+	    <th width="200">Event Title</th>
+	    <th width="200">Event Content</th>
+			<th colspan="2">Manage</th>
+	  </tr>
+	  <% for team_schedule in @team_schedules %>
+	    <tr>
+	      <td><%= team_schedule.event_date %></td>
+	      <td><%= team_schedule.event_title %></td>
+	      <td><%= truncate(team_schedule.event_content) %></td>
+	      <td><%= link_to "Edit", edit_team_schedule_path(team_schedule) %></td>
+	      <td><%= link_to "Destroy", team_schedule, :confirm => 'Are you sure?', :method => :delete %></td>
+	    </tr>
+	  <% end %>
+	</table>
+
+<% else %>
+
+	<h3>No Team Schedules Created!</h3>
+
+<% end %>
+
+<p><%= link_to "New Team Schedule", new_team_schedule_path %></p>

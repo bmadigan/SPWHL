@@ -1,0 +1,11 @@
+one:
+  team_id: 1
+  event_date: 2011-06-23 12:17:47
+  event_title: MyString
+  event_content: MyText
+
+two:
+  team_id: 1
+  event_date: 2011-06-23 12:17:47
+  event_title: MyString
+  event_content: MyText

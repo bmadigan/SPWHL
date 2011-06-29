@@ -1,13 +1,13 @@
 <% title "Seasons" %>
 
-<table>
+<table class="admin-tbl" cellspacing="0">
   <tr>
-    <th>Name</th>
+    <th width="400">Name</th>
+		<th colspan="2">Manage</th>
   </tr>
   <% for season in @seasons %>
     <tr>
       <td><%= season.name %></td>
-      <td><%= link_to "Show", season %></td>
       <td><%= link_to "Edit", edit_season_path(season) %></td>
       <td><%= link_to "Destroy", season, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

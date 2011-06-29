@@ -2,6 +2,9 @@ class TeamsController < ApplicationController
   
   layout 'admin'
   
+  load_and_authorize_resource #cancan
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   def index
     @teams = Team.all
   end

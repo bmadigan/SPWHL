@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  load_and_authorize_resource #cancan
+  before_filter :authenticate_user!, :except => [:show, :index]
   
   #layout 'admin', :except => 'index'
   layout 'admin'

@@ -1,0 +1,76 @@
+<% title "Soo Peewee Hockey League - Hockey Sault Ste. Marie" %>
+
+
+<div class="grid_12">
+	
+	<!-- Featured News -->
+	<div id="featured_news" class="wrapper">
+		<div class="news_img"><img src="/images/news/bw-kid.png"></div>
+		<div class="news_right">
+			<div class="news_header">
+				<span class="sm">News</span>
+				<p>January 08, 2011</p>
+			</div>
+			<div class="news_summary">
+				<p class="title">Practice Jerseys are on Sale Starting Next Week</p>
+				<p>Here is the summary of such a type of news article, but I have no idea if this summary will wrap or not</p>
+				<div style="float:right;"><img src="/images/btn-read-more.png"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+
+<div class="grid_12">
+	
+	<!-- DailySchedule -->
+	<div id="table-top">
+		<span class="schedule">SCHEDULE:</span>
+		<span class="schedule-date">MONDAY JAN 08, 2011</span>
+	</div>
+	<table border="0" cellspacing="0" cellpadding="15" class="blue-grey" >
+	<tr>
+		<th width="50">League</th>
+		<th width="40">Type</th>
+		<th width="145">Home</th>
+		<th width="20">&nbsp;</th>
+		<th width="145">Visitors</th>
+		<th width="60">Time</th>
+		<th width="50">Arena</th>
+	</tr>
+	
+	<tr>
+		<td>TYKE</td>
+		<td>GAME</td>
+		<td>LUCIDIA ROCKETS</td>
+		<td><span class="vs">VS</span></td>
+		<td>DIZZYTREE RIVER RATS</td>
+		<td><strong>5:00pm</strong></td>
+		<td>SPW</td>
+	</tr>
+	<tr>
+		<td>NOV-B</td>
+		<td>GAME</td>
+		<td>HSBC BULLDOGS</td>
+		<td><span class="vs">VS</span></td>
+		<td>PRAXAIR ICE DOGS</td>
+		<td><strong>6:00pm</strong></td>
+		<td>SPW</td>
+	</tr>
+	</table>
+	<!-- end of Daily Schedule -->
+	
+	<div id='user_nav'> 
+		<% if user_signed_in? %>
+			Signed in as <%= current_user.name %> 
+			<%= link_to "Sign Out", destroy_user_session_path %>
+		<% else %>
+			<%= link_to "Sign In", new_user_session_path %>  
+			&nbsp; | &nbsp;  
+	    <%= link_to  "Sign up", new_user_registration_path %>
+		<% end %>
+	</div>
+</div>

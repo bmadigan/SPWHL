@@ -1,0 +1,50 @@
+<% title "Dashboard" %>
+
+<% if current_user.manager? %>
+	<table border="0" class="dashboard" cellpadding="8">
+	<tr>
+		<td width="100"><img src="/images/admin/ico-helmet.png"></td>
+		<td width="300">
+			<h3>Update Team Page</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+		</td>
+		<td width="100"><img src="/images/admin/ico-standings.png"></td>
+		<td width="300">
+			<h3>Manage Team Schedule</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+		</td>
+	</tr>
+	</table>
+<% end %>
+
+<% if current_user.director? %>
+
+	<table border="0" class="dashboard" cellpadding="8">
+	<tr>
+		<td width="100"><img src="/images/admin/ico-scoreboard.png"></td>
+		<td width="300">
+			<h3>Update League Standings</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+		</td>
+		<td width="100"><img src="/images/admin/ico-standings.png"></td>
+		<td width="300">
+			<h3>Manage League Schedule</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="100"><img src="/images/admin/ico-helmet.png"></td>
+		<td width="300">
+			<h3>Update League Page</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+		</td>
+		<td width="100"><img src="/images/admin/ico-jersey.png"></td>
+		<td width="300">
+			<h3>Manage Team Rosters</h3>
+			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+		</td>
+	</tr>
+	</table>
+	
+<% end %>

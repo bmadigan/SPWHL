@@ -1,0 +1,23 @@
+<% title "User Manager" %>
+
+<table class="admin-tbl" cellspacing="0">
+  <tr>
+    <th>Name</th>
+		<th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th colspan="2">
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td width="180"><%= user.name %></td>
+			<td width="115"><%= user.username %></td>
+  		<td width="210"><%= user.email %></td>
+			<td width="140"><%= user.role_type %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Create New User", new_user_path %></p>

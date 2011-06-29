@@ -1,9 +1,10 @@
 class SchedulesController < ApplicationController
   layout 'admin'
+  before_filter :authenticate_user!, :except => [:show]
   
   def index
     @schedules = Schedule.all
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
   end
 
   def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110621194315) do
+ActiveRecord::Schema.define(:version => 20110623161747) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(:version => 20110621194315) do
     t.integer  "away_team_id"
     t.boolean  "is_game"
     t.boolean  "is_draft_game"
-    t.boolean  "is_league_run"
-    t.string   "team_event_name"
     t.datetime "scheduled_date"
     t.boolean  "is_tournament"
     t.integer  "tournament_id"
@@ -58,6 +56,15 @@ ActiveRecord::Schema.define(:version => 20110621194315) do
 
   create_table "seasons", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "team_schedules", :force => true do |t|
+    t.integer  "team_id"
+    t.datetime "event_date"
+    t.string   "event_title"
+    t.text     "event_content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20110621194315) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role_type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,17 +1,17 @@
 <% title "Leagues" %>
 
-<table>
+<table class="admin-tbl" cellspacing="0">
   <tr>
-    <th>Name</th>
-    <th>Season</th>
-    <th>Is House League</th>
+    <th width="250">Name</th>
+    <th width="100">Season</th>
+    <th width="75">HL?</th>
+		<th colspan="2">Manage</th>
   </tr>
   <% for league in @leagues %>
     <tr>
       <td><%= league.name %></td>
-      <td><%= league.season_id %></td>
+      <td><%= league.season.name %></td>
       <td><%= league.is_house_league %></td>
-      <td><%= link_to "Show", league %></td>
       <td><%= link_to "Edit", edit_league_path(league) %></td>
       <td><%= link_to "Destroy", league, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

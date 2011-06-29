@@ -1,0 +1,24 @@
+<% title "Team Schedule" %>
+
+<p>
+  <strong>Team:</strong>
+  <%= @team_schedule.team_id %>
+</p>
+<p>
+  <strong>Event Date:</strong>
+  <%= @team_schedule.event_date %>
+</p>
+<p>
+  <strong>Event Title:</strong>
+  <%= @team_schedule.event_title %>
+</p>
+<p>
+  <strong>Event Content:</strong>
+  <%= @team_schedule.event_content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_team_schedule_path(@team_schedule) %> |
+  <%= link_to "Destroy", @team_schedule, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", team_schedules_path %>
+</p>

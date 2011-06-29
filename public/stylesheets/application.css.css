@@ -1,89 +1,229 @@
-/*
-Syntax error: Invalid CSS after "...ckground-color:": expected pseudoclass or pseudoelement, was " $primary-color;"
-        on line 6 of /Users/brad/Code/Rails-Apps/soopeewee/public/stylesheets/sass/application.css.scss
+body {
+  margin: 0px auto;
+  background-color: #222222;
+  border-top: 10px solid #e6222a;
+  font-family: Helvetica, Arial, Verdana;
+  font-size: 0.85em; }
 
-1: $primary-color: #992A37;
-2: 
-3: $main-link-color: #cc0000;
-4: 
-5: body
-6:   background-color: $primary-color;
-7:   font:
-8:     family: Verdana, Helvetica, Arial
-9:     size: 14px
-10: 
-11: a
+a {
+  color: blue; }
 
-Backtrace:
-/Users/brad/Code/Rails-Apps/soopeewee/public/stylesheets/sass/application.css.scss:6
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:898:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:841:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:823:in `expr!'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:595:in `pseudo'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:491:in `simple_selector_sequence'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:472:in `_selector'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:445:in `selector'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:429:in `selector_sequence'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:354:in `ruleset'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:379:in `block_child'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:372:in `block_contents'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:57:in `stylesheet'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/scss/parser.rb:26:in `parse'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/engine.rb:319:in `_to_tree'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/engine.rb:291:in `_render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/engine.rb:239:in `render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/util.rb:298:in `silence_sass_warnings'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/engine.rb:239:in `render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:175:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:173:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.2/lib/sass/../sass/plugin/rack.rb:51:in `call'
-/Library/Ruby/Gems/1.8/gems/warden-1.0.4/lib/warden/manager.rb:35:in `call'
-/Library/Ruby/Gems/1.8/gems/warden-1.0.4/lib/warden/manager.rb:34:in `catch'
-/Library/Ruby/Gems/1.8/gems/warden-1.0.4/lib/warden/manager.rb:34:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `call'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
-/Library/Ruby/Gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
-/Library/Ruby/Gems/1.8/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
-/Library/Ruby/Gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
-/Library/Ruby/Gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `send'
-/Library/Ruby/Gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:146:in `handle'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:99:in `start'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:86:in `each'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:86:in `start'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:66:in `loop'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:66:in `start'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/lib/nack/server.rb:13:in `run'
-/Users/brad/Library/Application Support/Pow/Versions/0.3.1/node_modules/nack/bin/nack_worker:4
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"...ckground-color:\": expected pseudoclass or pseudoelement, was \" $primary-color;\"\A         on line 6 of /Users/brad/Code/Rails-Apps/soopeewee/public/stylesheets/sass/application.css.scss\A \A 1: $primary-color: #992A37;\A 2: \A 3: $main-link-color: #cc0000;\A 4: \A 5: body\A 6:   background-color: $primary-color;\A 7:   font:\A 8:     family: Verdana, Helvetica, Arial\A 9:     size: 14px\A 10: \A 11: a"; }
+a img {
+  border: none; }
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden; }
+
+#topbar {
+  height: 110px;
+  background: url("/images/bkg-header-bar.jpg"); }
+
+#container {
+  margin: 0 auto;
+  background: #222222; }
+  #container #content-wrapper {
+    background: #e6e8ea;
+    overflow: hidden;
+    padding: 0px 0 30px 0; }
+
+#featured_news {
+  margin: 0px; }
+  #featured_news .news_img {
+    width: 200px;
+    float: left;
+    text-align: right; }
+  #featured_news .news_right {
+    float: left;
+    background-color: #000100;
+    height: 245px;
+    margin: 0px; }
+  #featured_news .news_header {
+    padding: 7px 10px;
+    background: #226498;
+    font-size: 0.85em;
+    color: #fff; }
+    #featured_news .news_header .sm {
+      color: #8dafca;
+      font-style: italic; }
+    #featured_news .news_header p {
+      margin: 2px 0 4px 0;
+      line-height: 0.7em; }
+  #featured_news .news_summary {
+    padding: 10px 13px;
+    width: 230px;
+    color: #fff; }
+    #featured_news .news_summary .title {
+      margin: 3px 0 12px 0;
+      white-space: pre-wrap;
+      font-size: 1.1em;
+      font-style: italic;
+      color: #fff; }
+    #featured_news .news_summary p {
+      color: #9a999a;
+      font-size: 0.92em; }
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+  text-align: center; }
+
+#flash_notice {
+  background-color: #68B800;
+  color: #fff;
+  border: solid 1px #5F9616; }
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66; }
+
+#error_explanation {
+  padding: 6px;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  background-color: #f4dcdc; }
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 1.35em;
+  margin: 0px;
+  color: #000; }
+
+#error_explanation p {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 0;
+  padding: 8px; }
+
+#error_explanation ul {
+  margin: 2px 24px; }
+
+#error_explanation ul li {
+  color: #000;
+  font-size: 12px;
+  list-style: disc; }
+
+.notice {
+  margin: 6px 0;
+  text-align: center;
+  padding: 4px 5px;
+  color: #222;
+  text-shadow: 1px 1px 1px #fff;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 0.88em; }
+
+.attention {
+  background-color: #fef088;
+  border: 3px solid #bf9900; }
+
+#menu {
+  height: 44px;
+  background: url("/images/bkg-menu.png"); }
+  #menu ul {
+    list-style-type: none;
+    height: 44px;
+    margin: auto; }
+  #menu li {
+    float: left; }
+  #menu ul a {
+    padding-right: 25px;
+    padding-left: 0px;
+    display: block;
+    line-height: 44px;
+    text-decoration: none;
+    font-size: 1.0em;
+    text-transform: uppercase;
+    color: white;
+    background-image: url(/images/menu-spacer.png);
+    background-repeat: no-repeat;
+    background-position: right; }
+  #menu ul a.last {
+    background: none; }
+  #menu ul a:hover {
+    color: #999; }
+
+#menu_shadow {
+  height: 34px;
+  background: url("/images/bkg-wrapper-shadow.png"); }
+
+/* Table */
+.blue-grey {
+  margin: 0px 0 20px 0;
+  font-size: 0.75em; }
+  .blue-grey .vs {
+    color: #919191; }
+  .blue-grey th {
+    background: url("/images/bkg-th.png") repeat-x top;
+    text-align: left;
+    color: #fff;
+    padding: 10px 0px 10px 3px;
+    font-weight: normal;
+    text-transform: uppercase; }
+  .blue-grey td {
+    background: url("/images/bkg-td.png") repeat-x top;
+    color: #464646;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #bababa;
+    padding: 4px 0px 4px 3px; }
+
+#table-top {
+  margin: 0 0;
+  padding: 8px 7px;
+  background: #226498;
+  font-size: 1.3em; }
+  #table-top .schedule {
+    font-style: italic;
+    color: #8dafca;
+    margin-right: 15px; }
+  #table-top .schedule-date {
+    color: #fff; }
+
+#footer {
+  margin: 30px 0; }
+  #footer .footer-copy {
+    font-size: 0.92em;
+    color: #d7d7d7; }
+
+.simple_form label {
+  float: left;
+  width: 240px;
+  text-align: right;
+  margin: 2px 10px;
+  vertical-align: top; }
+.simple_form .text {
+  vertical-align: top;
+  text-align: left;
+  margin: 2px 0 12px 0;
+  width: 100%; }
+.simple_form div.input {
+  margin-bottom: 10px;
+  vertical-align: top; }
+.simple_form div.input {
+  margin-bottom: 10px;
+  vertical-align: top; }
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  margin-right: 20px;
+  text-align: right; }
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0; }
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px; }
+.simple_form .error {
+  clear: left;
+  margin-left: 240px;
+  font-size: 12px;
+  color: #D00;
+  display: block; }
+.simple_form .hint {
+  clear: left;
+  margin-left: 240px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic; }
