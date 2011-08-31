@@ -1,0 +1,29 @@
+<% title @article.article_title %>
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+
+	<h1><%= @article.article_title %></h1>
+	
+	<div class="page-content">
+		<%= sanitize(@article.article_content) %>
+	</div>
+
+	<% for asset in @assets %>
+		<div class="asset">
+			DOWNLOAD FILE: &nbsp; <%= link_to asset.asset_file_name, asset.asset.url %>
+		</div>
+	<% end %>
+</div>
+
+<div class="grid_5 article-side">
+	<h4>PAST ARTICLES</h4>
+	<hr>	
+	<% for article in @archive %>
+		&raquo <%= link_to article.article_title, article %><br/>
+	<% end %>
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

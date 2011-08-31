@@ -1,0 +1,29 @@
+<% title "Latest News & Updates" %>
+
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1>Latest News & Updates</h1>
+	<div class="page-content">
+		
+		<table class="news-tbl">
+		<% for article in @articles %>
+		<tr>
+			<td class="date" width="80" align="center">
+				<span class="month"><%= news_date_month(article.created_at) %></span><br />
+				<span class="day"><%= news_date_day(article.created_at) %></span>
+			</td>
+			<td width="620" style="padding-left:15px;"><%= link_to article.article_title, article %></td>
+		</tr>
+		<% end %>
+		</table>
+		
+	</div>
+
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>
+

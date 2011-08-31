@@ -12,8 +12,10 @@
       <td><%= team.name %></td>
       <td><%= team.league.name %></td>
       <td><%= team.manager.name %></td>
-      <td><%= link_to "Edit", edit_team_path(team) %></td>
-      <td><%= link_to "Destroy", team, :confirm => 'Are you sure?', :method => :delete %></td>
+
+			<td><%= button_to "E", edit_team_path(team.id), :method => :get %></td>
+			<td><%= button_to "X", team_path(team.id), :method => :delete, :confirm => "Are you sure?" %></td>
+
     </tr>
   <% end %>
 </table>

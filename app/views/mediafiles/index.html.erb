@@ -1,0 +1,25 @@
+<% title "Mediafiles" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Media File Name</th>
+    <th>Media Content Type</th>
+    <th>Media File Size</th>
+    <th>Updated At</th>
+  </tr>
+  <% for mediafile in @mediafiles %>
+    <tr>
+      <td><%= mediafile.name %></td>
+      <td><%= mediafile.attachment_file_name %></td>
+      <td><%= mediafile.attachment_content_type %></td>
+      <td><%= mediafile.attachment_file_size %></td>
+      <td><%= mediafile.attachment_updated_at %></td>
+      <td><%= link_to "Show", mediafile %></td>
+      <td><%= link_to "Edit", edit_mediafile_path(mediafile) %></td>
+      <td><%= link_to "Destroy", mediafile, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Mediafile", new_mediafile_path %></p>

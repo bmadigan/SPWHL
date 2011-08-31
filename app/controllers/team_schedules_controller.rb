@@ -16,11 +16,15 @@ class TeamSchedulesController < ApplicationController
 
   def new
     @team = Team.find_by_manager_id(current_user)
+    @team_id = @team.id
     @team_schedule = TeamSchedule.new
   end
 
   def create
+    @team = Team.find_by_manager_id(current_user)
     @team_schedule = TeamSchedule.new(params[:team_schedule])
+    
+    @team_schedule.team_id = @team.id
     if @team_schedule.save
       redirect_to @team_schedule, :notice => "Successfully created team schedule."
     else
@@ -36,7 +40,7 @@ class TeamSchedulesController < ApplicationController
   def update
     @team_schedule = TeamSchedule.find(params[:id])
     if @team_schedule.update_attributes(params[:team_schedule])
-      redirect_to @team_schedule, :notice  => "Successfully updated team schedule."
+      redirect_to admin_index_url, :notice  => "Successfully updated your team schedule."
     else
       render :action => 'edit'
     end

@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  media_file_name: MyString
+  media_content_type: MyString
+  media_file_size: 1
+  updated_at: 2011-08-22 19:29:24
+
+two:
+  name: MyString
+  media_file_name: MyString
+  media_content_type: MyString
+  media_file_size: 1
+  updated_at: 2011-08-22 19:29:24

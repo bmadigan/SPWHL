@@ -1,0 +1,23 @@
+<% title "Standings" %>
+
+<table>
+  <tr>
+    <th>League</th>
+    <th>Game</th>
+    <th>Home Team Score</th>
+    <th>Away Team Score</th>
+  </tr>
+  <% for standings in @standings %>
+    <tr>
+      <td><%= standings.league_id %></td>
+      <td><%= standings.game_id %></td>
+      <td><%= standings.home_team_score %></td>
+      <td><%= standings.away_team_score %></td>
+      <td><%= link_to "Show", standings %></td>
+      <td><%= link_to "Edit", edit_standings_path(standings) %></td>
+      <td><%= link_to "Destroy", standings, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Standings", new_standings_path %></p>

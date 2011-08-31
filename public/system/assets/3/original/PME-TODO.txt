@@ -1,0 +1,12 @@
+TODO FOR PME
+====================
+
+*** IMPORTANT THINGS ***
+
+- Fix 'Email Attendees' not working
+- A ticket from another Event is remembered in my cart.
+  When clicking Cancel Tickets I get an error
+- Test RSVP in IE seems to not work
+- Public Homepage in IE É Nav tabs not appear
+
+*** MISC ITEMS ***

@@ -286,3 +286,35 @@ a img {
     font-size: 0.88em;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.38, #ebebeb), color-stop(0.69, #fcfcfc), color-stop(0.85, #fafafa));
     background-image: -moz-linear-gradient(center bottom, #ebebeb 38%, #fcfcfc 69%, #fafafa 85%); }
+
+.file-upload {
+  overflow: hidden;
+  margin: 16px 0;
+  padding: 8px 5px;
+  border: 1px solid #e8e8e8;
+  background: #f9f9f9; }
+
+.pagination {
+  margin: 14px 2px;
+  padding: 3px; }
+  .pagination .current {
+    font-weight: bold; }
+  .pagination a {
+    color: #464646; }
+  .pagination a:hover {
+    color: #333; }
+
+.admin-bar {
+  margin: 12px 0;
+  padding: 5px;
+  width: 760px;
+  overflow: hidden; }
+  .admin-bar form {
+    display: inline; }
+  .admin-bar .left {
+    float: left;
+    width: 50%; }
+  .admin-bar .right {
+    float: right;
+    text-align: right;
+    width: 50%; }

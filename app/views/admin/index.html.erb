@@ -1,35 +1,41 @@
-<% title "Dashboard" %>
 
 <% if current_user.manager? %>
+	<% title "Team Manager Dashboard" %>
+
 	<table border="0" class="dashboard" cellpadding="8">
 	<tr>
 		<td width="100"><img src="/images/admin/ico-helmet.png"></td>
-		<td width="300">
+		<td width="300" valign="top">
 			<h3>Update Team Page</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+			<p>This is where you can update your Team Page information.</p>
+			<p><%= link_to "Click To Manage", edit_team_path(@team) %></p>
 		</td>
 		<td width="100"><img src="/images/admin/ico-standings.png"></td>
-		<td width="300">
+		<td width="300" valign="top">
 			<h3>Manage Team Schedule</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+			<p>Holding a team party or an extra practice? You can schedule your team functions here.<br/>
+				Note: This will automatically be included into your team schedule.</p>
+			<p><%= link_to "Click To Manage", team_schedules_path(@team) %></p>
 		</td>
 	</tr>
 	</table>
 <% end %>
 
 <% if current_user.director? %>
-
+	<% title "League Director Dashboard" %>
 	<table border="0" class="dashboard" cellpadding="8">
 	<tr>
 		<td width="100"><img src="/images/admin/ico-scoreboard.png"></td>
-		<td width="300">
+		<td width="300" valign="top">
 			<h3>Update League Standings</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+			<p>Update any games that have been already played.
+				<br/><%= link_to "Click To Manage", admin_index_path %></p>
 		</td>
 		<td width="100"><img src="/images/admin/ico-standings.png"></td>
-		<td width="300">
+		<td width="300" valign="top">
 			<h3>Manage League Schedule</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+			<p>Do you need to make changes to your schedule?
+				<br/><%= link_to "Click To Manage", admin_index_path %></p>
 		</td>
 	</tr>
 	
@@ -37,14 +43,30 @@
 		<td width="100"><img src="/images/admin/ico-helmet.png"></td>
 		<td width="300">
 			<h3>Update League Page</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here are some sort of instructions</p>
+			<p>This is the main homepage for your division. General news and updates.
+				<br/><%= link_to "Click To Manage", admin_index_path %></p>
 		</td>
 		<td width="100"><img src="/images/admin/ico-jersey.png"></td>
 		<td width="300">
 			<h3>Manage Team Rosters</h3>
-			<p><%= link_to "Click To Manage", admin_index_path %> Here is some instructions</p>
+			<p>This is where you can update players, coaches, trainers and managers.
+				<br/><%= link_to "Click To Manage", admin_index_path %> </p>
 		</td>
 	</tr>
 	</table>
 	
+<% end %>
+
+<% if current_user.webmaster? %>
+
+	<% title "Webmaster Dashboard" %>
+	
+	<%= link_to "Seasons", seasons_path %><br>
+  <%= link_to "Leagues", leagues_path %><br>
+  <%= link_to "Teams", teams_path %><br>
+  <%= link_to "Schedules", schedules_path %><br>
+  <%= link_to "Pages", pages_path %><br>
+	<%= link_to "News Articles", article_admin_path %><br>
+	<%= link_to "User Accounts", users_path %><br>
+
 <% end %>

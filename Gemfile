@@ -12,6 +12,16 @@ gem "jquery-rails"
 gem "simple_form"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'cancan'
+gem 'tiny_mce'
+gem 'paperclip'
+
+gem 'inherited_resources'
+gem 'has_scope'
+gem 'kaminari'
+
 
 gem "nifty-generators", :group => :development
+
+gem "easy_dates"
+
 #gem "mocha", :group => :test

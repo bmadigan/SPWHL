@@ -5,7 +5,7 @@ class Ability
     
     user ||= User.new # guest user (not logged in)
     
-    alias_action :update, :edit, :to => :modify_team_info
+    alias_action :update, :edit, :to => :modify_info
     
     # LEAGUE DIRECTOR ABILITIES
     # =====================================
@@ -15,23 +15,17 @@ class Ability
         can :update, Schedule do |schedule|
           schedule.try(:user) == user
         end
-        can [:update, :create, :destroy], Roster do |roster|
-          roster.try(:user) == user
-        end
+        can [:manage], Roster, :team => { :league_id => { :league => { :director_id => user.id }}}
+        can [:modify_info], League, :director_id => user.id
+        can :read, :all
         
     # TEAM MANAGER ABILITIES
     # =====================================
     elsif user.role_type == 'Manager'
       
-      can [:modify_team_info], Team, :manager_id => user.id
-      can [:manage], TeamSchedule, :team => { :manager_id => user.id }
-            # 
-            # can [:modify_team_info], Team do |team|
-            #   team.try(:manager_id) == user
-            # end
-            # can [:create, :update, :destroy], Schedule do |schedule|
-            #   schedule.try(:manager_id) == user
-            # end
+      can [:modify_info], Team, :manager_id => user.id
+      can [:modify_info], TeamSchedule, :team_schedule => { :team => { :manager_id => user.id }}
+      can :read, :all
     
     # EVERYONE ELSE
     # =====================================

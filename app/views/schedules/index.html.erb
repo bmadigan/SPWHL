@@ -1,4 +1,33 @@
 <% title "Schedules" %>
 
+<table class="admin-tbl" cellspacing="0">
+  <tr>
+		<th width="55">League</th>
+		<th width="75">Type</th>
+    <th width="135">Home</th>
+		<th width="135">Visting</th>
+		<th width="45">Arena</th>
+    <th width="165">Date</th>
+		<th colspan="2">Manage</th>
+  </tr>
+  <% for schedule in @schedules %>
+    <tr>
+			<td><%= schedule.league.name %></td>
+			<% if schedule.is_game? %>
+				<td>Game</td>
+			<% else %>
+				<td>Practice</td>
+			<% end %>
+      <td><%= schedule.hometeam.name %></td>
+			<td><%= schedule.awayteam.name %></td>
+			<td><%= schedule.arena %></td>
+      <td><%= schedule.formatted_scheduled_date %></td>
+
+			<td><%= button_to "E", edit_schedule_path(schedule.id), :method => :get %></td>
+			<td><%= button_to "X", schedule_path(schedule.id), :method => :delete, :confirm => "Are you sure?" %></td>
+
+    </tr>
+  <% end %>
+</table>
 
 <p><%= link_to "New Schedule", new_schedule_path %></p>

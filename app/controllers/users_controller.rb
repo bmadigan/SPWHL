@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path, :notice => "Successfully created User Account."
+      redirect_to admin_index_path, :notice => "Successfully created User Account."
     else
       render :action => 'new'
     end  
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user, :notice  => "Successfully updated User Account."
+      redirect_to admin_index_path, :notice  => "Successfully updated User Account."
     else
       render :action => 'edit'
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110623161747) do
+ActiveRecord::Schema.define(:version => 20110831024243) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -18,6 +18,24 @@ ActiveRecord::Schema.define(:version => 20110623161747) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "arena_id"
+  end
+
+  create_table "articles", :force => true do |t|
+    t.string   "article_title"
+    t.text     "article_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "summary"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.integer  "page_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "leagues", :force => true do |t|
@@ -28,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20110623161747) do
     t.datetime "updated_at"
     t.integer  "director_id"
     t.text     "page_content"
+    t.string   "short_name"
+  end
+
+  create_table "mediafiles", :force => true do |t|
+    t.string   "name"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "page_title"
+    t.text     "page_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rosters", :force => true do |t|
@@ -47,11 +82,10 @@ ActiveRecord::Schema.define(:version => 20110623161747) do
     t.boolean  "is_game"
     t.boolean  "is_draft_game"
     t.datetime "scheduled_date"
-    t.boolean  "is_tournament"
-    t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "arena"
+    t.boolean  "display_change"
   end
 
   create_table "seasons", :force => true do |t|

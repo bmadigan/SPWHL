@@ -1,0 +1,9 @@
+
+= simple_form_for @team_schedule do |f| 
+  = f.error_messages
+  = f.input :event_date, :start_year => Date.today.year, :end_year => Date.today.year + 1, :twelve_hour => false, :minute_step => 15, :order => [:month, :day, :year]
+  = f.input :event_title
+
+  = f.input :event_content,  :input_html => { :class => 'mceEditor' }, :as => :text, :label => 'Enter the content for this event'
+
+  = f.button :submit

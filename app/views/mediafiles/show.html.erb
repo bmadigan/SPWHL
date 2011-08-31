@@ -1,0 +1,15 @@
+<% title "Mediafile" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @mediafile.name %>
+</p>
+<% if @mediafile.attachment? %>
+	Download File: <%= link_to "Here", @mediafile.attachment.url %>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_mediafile_path(@mediafile) %> |
+  <%= link_to "Destroy", @mediafile, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", mediafiles_path %>
+</p>

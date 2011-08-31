@@ -1,21 +1,24 @@
-<% title "Leagues" %>
+<% title "Soo Peewee Hockey League" %>
 
-<table class="admin-tbl" cellspacing="0">
-  <tr>
-    <th width="250">Name</th>
-    <th width="100">Season</th>
-    <th width="75">HL?</th>
-		<th colspan="2">Manage</th>
-  </tr>
-  <% for league in @leagues %>
-    <tr>
-      <td><%= league.name %></td>
-      <td><%= league.season.name %></td>
-      <td><%= league.is_house_league %></td>
-      <td><%= link_to "Edit", edit_league_path(league) %></td>
-      <td><%= link_to "Destroy", league, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @page.page_title  %></h1>
+	<div class="page-content">
+		<%= sanitize(@page.page_content) %>
+	</div>
+
+</div>
+
+<div class="grid_5 article-side">
+	<h4>LEAGUES</h4>
+	<hr>	
+	<% for l in @leagues %>
+      &raquo <%= link_to l.name, league_path(l) %><br/>
   <% end %>
-</table>
+</div>
 
-<p><%= link_to "New League", new_league_path %></p>
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

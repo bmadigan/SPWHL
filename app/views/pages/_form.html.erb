@@ -1,0 +1,43 @@
+<%= form_for @page do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :page_title %><br />
+    <%= f.text_field :page_title %>
+  </p>
+  <p>
+    <%= f.label :page_content %><br />
+    <%= f.text_area :page_content, :class => 'mceEditor' %>
+  </p>
+
+	<div class="clear">&nbsp;</div>
+	<div class="file-upload">
+		<div style="float:left;width:500px;">
+		<h2>Upload Media Files (PDF, JPG, DOC)</h2>
+		<% f.fields_for :assets do |assets_field| %>
+			<% if assets_field.object.new_record? %>
+			
+					<%= assets_field.file_field :asset %>
+
+			<% end %>
+		<% end %>
+		</div>
+		<div style="float:left;width:400px">
+		<h2>Associated Files</h2>
+		<% f.fields_for :assets do |assets_field| %>
+			<% unless assets_field.object.new_record? %>
+
+					<table>
+					<tr>
+						<td width="300"><%= link_to assets_field.object.asset_file_name, assets_field.object.asset.url %></td>
+						<td width="120" align="right"><%= assets_field.check_box :_destroy %> Remove</td>
+					</tr>
+					</table>
+
+			<% end %>
+		<% end %>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+	
+  <p><%= f.submit %></p>
+<% end %>

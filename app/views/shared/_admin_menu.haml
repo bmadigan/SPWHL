@@ -3,14 +3,20 @@
   -if can? :manage, @season
     %li= link_to "Seasons", seasons_path
   -if can? :manage, @league
-    %li= link_to "Leagues", leagues_path
+    %li= link_to "Leagues", league_admin_path
   -if can? :manage, @team
     %li= link_to "Teams", teams_path
   -if can? :manage, @schedule
-    %li= link_to "Schedules", schedules_path
+    %li= link_to "Schedules", schedule_admin_path
   -if can? :manage, @user
     %li= link_to "User Accounts", users_path
 
   -if current_user.manager?
     %li= link_to "Team Page", edit_team_path(@team)
     %li= link_to "Team Schedule", team_schedules_path(@schedule)
+
+  -if current_user.director?
+    %li= link_to "League Standings", edit_team_path(@league)
+    %li= link_to "League Schedule", team_schedules_path(@league)
+    %li= link_to "League Page", edit_league_path(@league)
+    %li= link_to "Team Rosters", edit_roster_path(@league)

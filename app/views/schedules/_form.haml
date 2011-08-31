@@ -3,16 +3,15 @@
   = f.error_messages
 
   = f.association :league, :include_blank => false
-  = f.association :home_team, :include_blank => false
-  = f.association :away_team, :include_blank => false
+  = f.association :hometeam, :include_blank => false
+  = f.association :awayteam, :include_blank => false
   = f.input :arena, :include_blank => false, :label => 'Choose Arena', :collection => [['Soo Peewee Arena', 'SPW'], ['John Rhodes One', 'JR1'], ['John Rhodes Two', 'JR2'], ['Rankin Arena', 'RNK'], ['Essar Centre', 'ESSR'], ['McMeeken Arena', 'MCK'], ['Not Applicable', 'NA']]
 
-  = f.input :is_game, :label => 'This is a Scheduled Game'
+  = f.input :is_game, :label => 'This is a Game', :hint => 'Leave Blank for a Practice'
   = f.input :is_draft_game, :label => 'This is a Draft Game'
-  = f.input :scheduled_date, :input_html => { :id => 'scheduled_date_picker' }, :as => :string
+  = f.input :display_change, :label => 'Highlight Game Change', :hint => 'Use if This is change in schedule'
 
-  %h3 Tournament Options
-  = f.input :is_tournament, :label => 'This is a Tournament Game'
-  = f.input :tournament_id, :label => 'Select Which Tournament'
+  = f.input :scheduled_date, :start_year => Date.today.year, :end_year => Date.today.year + 1, :twelve_hour => true, :minute_step => 15, :order => [:month, :day, :year]
+	
 
   = f.button :submit

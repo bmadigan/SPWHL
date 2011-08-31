@@ -18,4 +18,10 @@ class User < ActiveRecord::Base
       return true
     end
   end
+  
+  def webmaster?
+    if role_type == 'God'
+      return true
+    end
+  end
 end

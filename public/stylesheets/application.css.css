@@ -6,7 +6,7 @@ body {
   font-size: 0.85em; }
 
 a {
-  color: blue; }
+  color: #111; }
 
 a img {
   border: none; }
@@ -20,6 +20,20 @@ a img {
   height: 110px;
   background: url("/images/bkg-header-bar.jpg"); }
 
+#flash_notice, #flash_alert {
+  margin: 0px;
+  text-align: center;
+  padding: 6px;
+  font-size: 1.3em; }
+
+#flash_notice {
+  color: #fff;
+  background: #228B22; }
+
+#flash_alert {
+  color: #fff;
+  background: #DC143C; }
+
 #container {
   margin: 0 auto;
   background: #222222; }
@@ -27,6 +41,31 @@ a img {
     background: #e6e8ea;
     overflow: hidden;
     padding: 0px 0 30px 0; }
+    #container #content-wrapper h1 {
+      text-transform: uppercase;
+      color: #555;
+      text-shadow: 1px 1px 1px #fff; }
+  #container .page-content {
+    padding-right: 15px;
+    color: #444; }
+    #container .page-content a {
+      color: #333; }
+  #container h4 {
+    font-size: 1.1em;
+    margin: 2px 0;
+    color: #666; }
+  #container .article-side a {
+    color: #333;
+    font-size: 0.90em; }
+  #container .article-side a:hover {
+    color: #fff;
+    background-color: #333;
+    text-decoration: none; }
+  #container .article-side hr {
+    color: #fff;
+    background-color: #fff;
+    border: 1px dotted #a7a7a7;
+    border-style: none none dotted; }
 
 #featured_news {
   margin: 0px; }
@@ -150,6 +189,42 @@ a img {
   height: 34px;
   background: url("/images/bkg-wrapper-shadow.png"); }
 
+.signin {
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #b7b7b7;
+  border-bottom: 1px solid #b7b7b7;
+  background-color: #c6c6c6;
+  padding: 8px 10px; }
+  .signin h1, .signin h2, .signin h3 {
+    margin: 2px 0;
+    color: #555; }
+
+.signed_in {
+  margin: 10px 0;
+  padding: 16px 10px;
+  background: #fff;
+  border: 1px solid #c8c8c8;
+  text-align: center;
+  box-shadow: 3px 3px 2px #c5c5c5;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+  .signed_in .light {
+    color: #999; }
+  .signed_in .user {
+    font-weight: bold;
+    font-size: 1.3em;
+    padding-left: 12px; }
+
+.small-schedule {
+  margin: 5px 0;
+  padding: 3px 2px;
+  font-size: 0.88em;
+  border-bottom: 1px solid #d2d2d2;
+  color: #666; }
+  .small-schedule .dark {
+    color: #222; }
+
 /* Table */
 .blue-grey {
   margin: 0px 0 20px 0;
@@ -168,7 +243,8 @@ a img {
     color: #464646;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #bababa;
-    padding: 4px 0px 4px 3px; }
+    padding: 4px 0px 4px 3px;
+    text-transform: uppercase; }
 
 #table-top {
   margin: 0 0;
@@ -182,11 +258,87 @@ a img {
   #table-top .schedule-date {
     color: #fff; }
 
+.news {
+  margin: 0px 15px 20px 0;
+  font-size: 0.95em; }
+  .news th {
+    background: url("/images/bkg-th.png") repeat-x top;
+    text-align: left;
+    color: #fff;
+    padding: 10px 0px 10px 3px;
+    font-weight: normal;
+    text-transform: uppercase; }
+  .news td {
+    background: url("/images/bkg-td.png") repeat-x top;
+    color: #464646;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #bababa;
+    padding: 4px 0px 4px 3px;
+    text-transform: uppercase; }
+  .news a {
+    color: #111;
+    font-weight: bold;
+    text-decoration: none; }
+  .news a:hover {
+    color: #555; }
+
+#news-top {
+  margin: 0 0;
+  padding: 8px 7px;
+  background: #111;
+  font-size: 1.3em;
+  font-style: italic;
+  color: #fff;
+  margin-right: 15px; }
+  #news-top td {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 5px 6px; }
+
+.news-tbl {
+  margin: 0 0;
+  padding: 8px 6px; }
+  .news-tbl td {
+    border-bottom: 1px solid #c8c8c8; }
+  .news-tbl a {
+    font-size: 1.4em;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none; }
+  .news-tbl a:hover {
+    color: #666; }
+  .news-tbl .date {
+    background-color: #333;
+    line-height: 2.2em; }
+  .news-tbl .month {
+    font-size: 2.6em;
+    color: #fff; }
+  .news-tbl .day {
+    font-size: 1.3em;
+    color: #fff; }
+
+.asset {
+  margin: 6px 15px 2px 0;
+  padding: 6px 4px;
+  border: 1px solid #c9c9c9;
+  background: #fff;
+  color: #777;
+  font-size: 0.82em; }
+  .asset a {
+    color: #222;
+    font-weight: bold; }
+  .asset a:hover {
+    color: #888; }
+
 #footer {
   margin: 30px 0; }
   #footer .footer-copy {
-    font-size: 0.92em;
-    color: #d7d7d7; }
+    font-size: 0.82em;
+    color: #999999; }
+  #footer a {
+    color: #777; }
+  #footer a:hover {
+    color: #999; }
 
 .simple_form label {
   float: left;

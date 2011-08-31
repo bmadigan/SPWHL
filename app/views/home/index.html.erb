@@ -9,16 +9,35 @@
 		<div class="news_right">
 			<div class="news_header">
 				<span class="sm">News</span>
-				<p>January 08, 2011</p>
+				<p style="text-transform:uppercase"><%= @article.formatted_created_at %></p>
 			</div>
 			<div class="news_summary">
-				<p class="title">Practice Jerseys are on Sale Starting Next Week</p>
-				<p>Here is the summary of such a type of news article, but I have no idea if this summary will wrap or not</p>
-				<div style="float:right;"><img src="/images/btn-read-more.png"></div>
+				<p class="title"><%= @article.article_title %></p>
+				<p><%= @article.summary %></p>
+				<div style="float:right;">
+					<%= link_to image_tag('/images/btn-read-more.png'), article_path(@article) %>
+				</div>
 			</div>
 		</div>
 	</div>
+	<div class="clear">&nbsp;</div>
 	
+	<div class="wrapper">
+		<div id="news-top">
+			<span class="schedule">Lastest News & Updates</span>
+		</div>
+		<table border="0" cellspacing="0" cellpadding="15" class="news" >
+			<% for article in @archive %>
+			<tr>
+				<td width="180">&nbsp; <%= article.formatted_created_at %></td>
+				<td width="360" style="padding-left:15px;"><%= link_to article.article_title, article %></td>
+			</tr>
+			<% end %>
+		</table>
+		<div style="text-align:right; margin-right:15px; ">
+			<a href="/articles/">More News & Updates</a>
+		</div>
+	</div>
 	
 </div>
 
@@ -29,48 +48,65 @@
 	<!-- DailySchedule -->
 	<div id="table-top">
 		<span class="schedule">SCHEDULE:</span>
-		<span class="schedule-date">MONDAY JAN 08, 2011</span>
+		<span class="schedule-date"><%= todays_date(Date.today) %></span>
 	</div>
 	<table border="0" cellspacing="0" cellpadding="15" class="blue-grey" >
 	<tr>
-		<th width="50">League</th>
+		<th width="50">LEAG</th>
 		<th width="40">Type</th>
-		<th width="145">Home</th>
+		<th width="145">Home Team</th>
 		<th width="20">&nbsp;</th>
-		<th width="145">Visitors</th>
+		<th width="145">Visiting Team</th>
 		<th width="60">Time</th>
 		<th width="50">Arena</th>
 	</tr>
 	
-	<tr>
-		<td>TYKE</td>
-		<td>GAME</td>
-		<td>LUCIDIA ROCKETS</td>
-		<td><span class="vs">VS</span></td>
-		<td>DIZZYTREE RIVER RATS</td>
-		<td><strong>5:00pm</strong></td>
-		<td>SPW</td>
-	</tr>
-	<tr>
-		<td>NOV-B</td>
-		<td>GAME</td>
-		<td>HSBC BULLDOGS</td>
-		<td><span class="vs">VS</span></td>
-		<td>PRAXAIR ICE DOGS</td>
-		<td><strong>6:00pm</strong></td>
-		<td>SPW</td>
-	</tr>
+	<% if @schedules.blank? %>
+		<tr>
+			<td colspan="7" align="center" style="font-size:1.5em;">THERE ARE NO SCHEDULED GAMES FOR TODAY</td>
+		</tr>
+	<% else %>	
+		<% for schedule in @schedules %>
+	    <tr>
+				<td><%= schedule.league.short_name %></td>
+				<% if schedule.is_game? %>
+					<td>GAME</td>
+				<% else %>
+					<td>PRACT</td>
+				<% end %>
+	      <td><%= schedule.hometeam.name %></td>
+				<td><span class="vs">VS</span></td>
+				<td><%= schedule.awayteam.name %></td>
+	      <td><strong><%= schedule.scheduled_time %></strong></td>
+				<td><%= schedule.arena %></td>
+	    </tr>
+	  <% end %>
+	<% end %>
 	</table>
 	<!-- end of Daily Schedule -->
 	
 	<div id='user_nav'> 
 		<% if user_signed_in? %>
-			Signed in as <%= current_user.name %> 
-			<%= link_to "Sign Out", destroy_user_session_path %>
+			<div class="signed_in">
+				<span>Welcome to the SPW Website</span><br/>
+				<span class="light">Signed in as</span><span class="user"><%= current_user.name %></span><br/> 
+					<%= link_to "Admin", admin_index_path %> &nbsp; &nbsp; 
+					<span class="light"> | </span>&nbsp; &nbsp;  
+					<%= link_to "Sign Out", destroy_user_session_path %>
+			</div>
 		<% else %>
-			<%= link_to "Sign In", new_user_session_path %>  
-			&nbsp; | &nbsp;  
-	    <%= link_to  "Sign up", new_user_registration_path %>
+
+			<div class="signed_in">
+				<span class="light">Are you a Manager or Director?</span><br/>
+				<span class="user">LOGIN INTO YOUR ACCOUNT</span><br/> 
+					<%= form_for("user", :url => user_session_path) do |f| %>
+					  <%= f.text_field :username, :style => 'padding:4px;color:#666;width:125px;' %>
+
+					  <%= f.password_field :password, :style => 'padding:4px;color:#666;width:125px;' %>
+					<%= f.submit "Login" %>
+					<% end %>
+			</div>
+
 		<% end %>
 	</div>
 </div>

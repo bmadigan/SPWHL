@@ -2,10 +2,15 @@
 = simple_form_for @league do |f| 
   = f.error_messages
 
-  = f.input :name, :label => 'League Name'
-  = f.hint 'Eg. Peewee A, Atom B, etc'
-  = f.association :season, :disabled => true, :include_blank => false
-  = f.input :director_id
-  = f.input :is_house_league
-  = f.input :page_content,  :as => :text, :label => 'Enter the content for this leagues homepage'
+  -if current_user.webmaster?
+    = f.input :name, :label => 'League Name'
+    = f.hint 'Eg. Peewee A, Atom B, etc'
+    = f.input :short_name, :label => 'Short Name'
+    = f.hint 'Eg. Abbreviate NOVC, ATMB or PWA'
+    = f.association :season, :disabled => true, :include_blank => false
+    = f.input :director_id
+    = f.input :is_house_league
+  - else
+
+  = f.input :page_content,  :input_html => { :class => 'mceEditor' }, :as => :text, :label => 'Enter the content for this leagues homepage'
   = f.button :submit

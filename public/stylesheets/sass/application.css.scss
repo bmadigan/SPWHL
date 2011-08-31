@@ -4,7 +4,7 @@ $color-red: #e6222a;
 $content-area-bg: #e6e8ea;
 $menu-color:#fff;
 
-$footer-text-color:#d7d7d7;
+$footer-text-color:#999;
 
 $side-color: #226498;
 $side-text-light: #8dafca;
@@ -16,12 +16,16 @@ body {
   font-family: Helvetica, Arial, Verdana;
   font-size: 0.85em; }
 
-a { color: blue; }
+a { color: #111; }
   a img { border: none; }
 
 .clear { clear: both; height: 0; overflow: hidden; }
 
 #topbar { height:110px; background:url('/images/bkg-header-bar.jpg'); }
+
+#flash_notice, #flash_alert { margin:0px; text-align:center; padding:6px; font-size:1.3em;}
+#flash_notice { color:#fff; background:#228B22; }
+#flash_alert { color:#fff; background:#DC143C; }
 
 #container { 
 	margin: 0 auto; background: $page-bg-color; 
@@ -29,6 +33,20 @@ a { color: blue; }
 		background: $content-area-bg;
 		overflow:hidden;
 		padding:0px 0 30px 0;
+		
+		h1 { text-transform:uppercase; color:#555; text-shadow: 1px 1px 1px #fff; }
+	}
+	
+	.page-content {
+		padding-right:15px;
+		color:#444;
+		a { color:#333; }
+	}
+	h4 { font-size:1.1em; margin:2px 0; color:#666; }
+	.article-side {
+		a { color:#333; font-size:0.90em; }
+		a:hover { color:#fff; background-color:#333; text-decoration:none; }		
+		hr {color: #fff; background-color: #fff; border: 1px dotted #a7a7a7; border-style: none none dotted; }
 	}
 }
 
@@ -91,6 +109,41 @@ a { color: blue; }
 }
 #menu_shadow { height:34px; background:url('/images/bkg-wrapper-shadow.png'); }
 
+.signin { 
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #b7b7b7;
+	border-bottom:1px solid #b7b7b7;
+	background-color:#c6c6c6;
+	padding:8px 10px;
+	
+	h1, h2, h3 { margin:2px 0; color:#555; }
+}
+
+.signed_in {
+	margin:10px 0;
+	padding:16px 10px;
+	background:#fff;
+	border:1px solid #c8c8c8;
+	text-align:center;
+	box-shadow: 3px 3px 2px #c5c5c5;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	
+	.light { color:#999; }
+	.user { font-weight:bold; font-size:1.3em; padding-left:12px; }
+}
+
+.small-schedule {
+	margin:5px 0;
+	padding:3px 2px;
+	font-size:0.88em;
+	border-bottom:1px solid #d2d2d2;
+	color:#666;
+	
+	.dark { color:#222; }
+}
+
 /* Table */
 .blue-grey { 
 
@@ -98,7 +151,7 @@ a { color: blue; }
 	font-size:0.75em;
 	.vs { color:#919191; }
 	th { background:url('/images/bkg-th.png') repeat-x top; text-align:left; color:#fff; padding: 10px 0px 10px 3px; font-weight:normal; text-transform:uppercase; }
-	td { background:url('/images/bkg-td.png') repeat-x top; color:#464646; border-top:1px solid #fff; border-bottom:1px solid #bababa; padding: 4px 0px 4px 3px; }
+	td { background:url('/images/bkg-td.png') repeat-x top; color:#464646; border-top:1px solid #fff; border-bottom:1px solid #bababa; padding: 4px 0px 4px 3px; text-transform:uppercase; }
 }
 
 #table-top {
@@ -110,13 +163,60 @@ a { color: blue; }
 	.schedule-date { color:#fff; }
 }
 
+.news { 
+	margin:0px 15px 20px 0;
+	font-size:0.95em;
+	th { background:url('/images/bkg-th.png') repeat-x top; text-align:left; color:#fff; padding: 10px 0px 10px 3px; font-weight:normal; text-transform:uppercase; }
+	td { background:url('/images/bkg-td.png') repeat-x top; color:#464646; border-top:1px solid #fff; border-bottom:1px solid #bababa; padding: 4px 0px 4px 3px; text-transform:uppercase; }
+	a { color:#111; font-weight:bold; text-decoration:none; }
+	a:hover { color:#555; }
+}
+
+#news-top {
+	margin:0 0;
+	padding:8px 7px;
+	background: #111;
+	font-size:1.3em;
+	font-style:italic; color: #fff; 
+	margin-right:15px; 
+	
+	td { background:#fff; border-bottom:1px solid #e8e8e8; padding:5px 6px; }
+}
+
+.news-tbl {
+	margin:0 0;
+	padding:8px 6px;
+	
+	td { border-bottom:1px solid #c8c8c8; }
+	
+	a { font-size:1.4em; color:#333; font-weight:bold; text-decoration:none; }
+	a:hover { color:#666; }
+	
+	.date { background-color:#333; line-height:2.2em; }
+	.month { font-size:2.6em; color:#fff; }
+	.day { font-size:1.3em; color:#fff; }
+}
+.asset {
+	margin:6px 15px 2px 0;
+	padding:6px 4px;
+	border:1px solid #c9c9c9;
+	background:#fff;
+	color:#777;
+	font-size:0.82em;
+	
+	a { color:#222; font-weight:bold; }
+	a:hover { color:#888; }
+}
+
 #footer {
 	margin:30px 0;
 	
 	.footer-copy {
-		font-size:0.92em;
+		font-size:0.82em;
 		color: $footer-text-color;
 	}
+	a { color:#777; }
+	a:hover { color:#999; }
 }
 .simple_form {
 	label { float: left; width: 240px; text-align: right; margin: 2px 10px; vertical-align: top; }

@@ -23,6 +23,11 @@
     <div id='container'> 
       
 			<%= render 'shared/public_topbar' %>
+			<%- flash.each do |name, msg| -%>
+				<div class="container_24">
+			  	<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+				</div>
+			<%- end -%>
 			<%= render 'shared/public_menu' %>
 			
 			<div id="content-wrapper" class="container_24">
@@ -30,7 +35,10 @@
       </div>
 			<div class="clear">&nbsp;</div>
 
-			<%= render 'shared/public_footer' %>
+			<div class="container_24">
+				<%= render 'shared/public_footer' %>
+			</div>
+			<div class="clear">&nbsp;</div>
 			
     </div> 
 		

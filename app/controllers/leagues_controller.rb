@@ -2,15 +2,33 @@ class LeaguesController < ApplicationController
   load_and_authorize_resource #cancan
   before_filter :authenticate_user!, :except => [:show, :index]
   
-  #layout 'admin', :except => 'index'
-  layout 'admin'
+  layout :choose_layout
   
+  uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_toolbar_location => 'top',
+                              :theme_advanced_font_sizes => "10px,12px,14px,16px,24px",
+                              :theme_advanced_buttons1 => "fontsizeselect,bold,italic,underline,separator,justifyleft, justifycenter,justifyright,separator,bullist,numlist,separator,outdent,indent ,separator,undo,redo,separator,link,unlink,anchor,image,cleanup,separator,table,separator,forecolor,backcolor,strikethrough,code",
+                              :theme_advanced_buttons2 => '',
+                              :theme_advanced_buttons3 => '',
+                              :plugins => %w{ table }
+                            }
+                              
   def index
+    @leagues = League.all
+    # In this index, we are going to use it in the public area.
+    # For a list of admin league listings, see the admin_index below
+    @page = Page.find(3) #3 is the pkid for the league.
+  end
+  
+  def admin_index
     @leagues = League.all
   end
 
   def show
     @league = League.find(params[:id])
+    # Get the team listings for this leage.
+    @teams = @league.teams
   end
 
   def new
@@ -33,7 +51,7 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find(params[:id])
     if @league.update_attributes(params[:league])
-      redirect_to @league, :notice  => "Successfully updated league."
+      redirect_to admin_index_path, :notice  => "Successfully updated league."
     else
       render :action => 'edit'
     end
@@ -44,4 +62,14 @@ class LeaguesController < ApplicationController
     @league.destroy
     redirect_to leagues_url, :notice => "Successfully destroyed league."
   end
+  
+  private
+  def choose_layout
+    if ['show', 'index'].include? action_name
+      'application'
+    else
+      'admin'
+    end
+  end
+  
 end

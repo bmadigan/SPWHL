@@ -1,0 +1,28 @@
+<% title @page.page_title %>
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+
+	<h1><%= @page.page_title %></h1>
+	
+	<div class="page-content">
+		<%= sanitize(@page.page_content) %>
+	</div>
+
+	<% for asset in @assets %>
+		<div class="asset">
+			DOWNLOAD FILE: &nbsp; <%= link_to asset.asset_file_name, asset.asset.url %>
+		</div>
+	<% end %>
+</div>
+
+<div class="grid_5 article-side">
+	<h4>INFORMATION</h4>
+	<hr>
+	&raquo; Static Links
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>
+
