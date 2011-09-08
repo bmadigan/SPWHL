@@ -1,0 +1,70 @@
+<% title "Team Schedule" %>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+
+	<h1><%= @team.name  %> Schedule</h1>
+	
+	<p>NOTE: Schedule Changes are <span style="color:#cc0000;">flagged as red</span></p>
+	
+  <% @schedule_months.each do |month, schedules| %>  
+	<table class="blue-grey">
+		<tr>
+			<td colspan="6" class="day"><strong><%= month.strftime("%B  %Y") %></strong></td>
+		</tr>
+		<tr>
+			<th>DATE</th>
+			<th>TIME</th>
+			<th>TYPE</th>
+			<th>HOME</th>
+			<th>VISITOR</th>
+			<th>ARENA</th>
+		</tr>
+		<% schedules.each do |schedule| %> 
+			<tr>
+				<td><%= schedule.scheduled_short_date %></td>
+				<td width="55" <% if(schedule.is_change)%> class="change" <%end%>>
+					<%= schedule.scheduled_time %>
+				</td>
+				<td width="60" <% if(schedule.is_change)%> class="change" <%end%>>
+					<% if schedule.is_game? %>
+						GAME
+					<% else %>
+						PRACT
+					<% end %>
+				</td>
+				<td width="170" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.hometeam.name %></td>
+				<td width="170" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.awayteam.name %></td>
+				<td width="55" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.arena %></td>
+			</tr>
+	  <% end %>
+		</table>
+	<% end %>
+
+	<h2>UPCOMING TEAM SCHEDULED EVENTS</h2>
+	<table class="blue-grey" style="padding:5px; ">
+	<tr>
+		<th width="215">Event Date</th>
+		<th width="300">Event Name</th>
+		<th width="100">View</th>
+	</tr>
+	<% @full_team_schedule.each do |tsch| %> 
+		<tr>
+			<td><%= tsch.formatted_event_date %></td>
+			<td><%= tsch.event_title %></td>
+			<td><%= link_to "View Details", team_schedule_path(tsch) %></td>
+		</tr>
+  <% end %>
+	</table>
+	
+</div>
+
+<div class="grid_5 article-side">
+	&raquo <%= link_to "Team Page", team_path %><br/>
+	&raquo <%= link_to "Full Schedule", team_full_schedule_path %><br/>
+	&raquo <%= link_to "Team Roster", team_roster_path %><br/>
+	<br/>
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

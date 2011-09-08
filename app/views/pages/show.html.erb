@@ -18,9 +18,11 @@
 </div>
 
 <div class="grid_5 article-side">
-	<h4>INFORMATION</h4>
+	<h4>SUB MENU</h4>
 	<hr>
-	&raquo; Static Links
+	  <% for sub in @submenu %>
+	    &raquo; <%= link_to sub.page_title, sub %><br/>
+	  <% end %>
 </div>
 
 <div class="grid_1">&nbsp;</div><!--spacer-->

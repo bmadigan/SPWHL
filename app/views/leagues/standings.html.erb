@@ -1,0 +1,51 @@
+<% title @league.name %>
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @league.name  %> Standings</h1>
+	
+	<div class="page-content">
+		
+		<table class="blue-grey">
+			<tr>
+				<th width="260">TEAM</th>
+				<th width="45">GP</th>
+				<th width="45">W</th>
+				<th width="45">L</th>
+				<th width="45">T</th>
+				<th width="45">GF</th>
+				<th width="45">GA</th>
+				<th width="55">PTS</th>
+			</tr>
+		<% @steams.each do |key, value| %>
+		<tr>
+			<td><%= key['name'] %></td>
+			<td><%= key['gp'] %></td>
+			<td><%= key['wins']%></td>
+			<td><%= key['loses']%></td>
+			<td><%= key['ties']%></td>
+			<td><%= key['goals_for']%></td>
+			<td><%= key['goals_against']%></td>
+			<td><%= key['total_pts']%></td>
+		</tr>
+		<% end %>
+		</table>
+
+	</div>
+
+</div>
+
+<div class="grid_5 article-side">
+	<h4>TEAM PAGES</h4>
+	<hr>	
+	<% for t in @teams %>
+      &raquo <%= link_to t.name, team_path(t) %><br/>
+  <% end %>
+	
+	<%= render :partial => 'shared/league_side_nav' %>
+
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

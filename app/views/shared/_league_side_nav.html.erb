@@ -1,0 +1,7 @@
+<br/>
+<h4>LEAGUE INFO</h4>
+<hr>
+&raquo <%= link_to "General Info", league_path(@league) %><br/>
+&raquo <%= link_to 'Rosters', league_rosters_path(@league) %><br/>
+&raquo <%= link_to "League Standings", league_standings_path(@league), :method => :get %><br/>
+&raquo <%= link_to "League Schedule", schedule_path(@league), :method => :get %><br/>

@@ -1,7 +1,7 @@
 body {
   margin: 0px auto;
   background-color: #222222;
-  border-top: 10px solid #e6222a;
+  border-top: 10px solid #e89d00;
   font-family: Helvetica, Arial, Verdana;
   font-size: 0.85em; }
 
@@ -80,7 +80,7 @@ a img {
     margin: 0px; }
   #featured_news .news_header {
     padding: 7px 10px;
-    background: #226498;
+    background: #e89d00;
     font-size: 0.85em;
     color: #fff; }
     #featured_news .news_header .sm {
@@ -105,7 +105,7 @@ a img {
 
 #flash_notice, #flash_error {
   padding: 5px 8px;
-  margin: 10px 0;
+  margin: 1px 0;
   text-align: center; }
 
 #flash_notice {
@@ -235,7 +235,7 @@ a img {
     background: url("/images/bkg-th.png") repeat-x top;
     text-align: left;
     color: #fff;
-    padding: 10px 0px 10px 3px;
+    padding: 4px 0px 4px 4px;
     font-weight: normal;
     text-transform: uppercase; }
   .blue-grey td {
@@ -245,15 +245,23 @@ a img {
     border-bottom: 1px solid #bababa;
     padding: 4px 0px 4px 3px;
     text-transform: uppercase; }
+  .blue-grey .day {
+    color: #111;
+    font-weight: bold;
+    border-bottom: 3px solid #555;
+    font-size: 1.3em; }
+  .blue-grey .change {
+    color: #cc0000;
+    font-weight: bold; }
 
 #table-top {
   margin: 0 0;
   padding: 8px 7px;
-  background: #226498;
+  background: #e89d00;
   font-size: 1.3em; }
   #table-top .schedule {
     font-style: italic;
-    color: #8dafca;
+    color: #fff;
     margin-right: 15px; }
   #table-top .schedule-date {
     color: #fff; }

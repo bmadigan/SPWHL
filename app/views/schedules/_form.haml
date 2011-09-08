@@ -1,17 +1,16 @@
-
 = simple_form_for @schedule do |f| 
   = f.error_messages
 
-  = f.association :league, :include_blank => false
+  = f.association :league, :onchange => "change_team_select(this.options[this.selectedIndex].value);", :include_blank => "Select A League"
   = f.association :hometeam, :include_blank => false
   = f.association :awayteam, :include_blank => false
   = f.input :arena, :include_blank => false, :label => 'Choose Arena', :collection => [['Soo Peewee Arena', 'SPW'], ['John Rhodes One', 'JR1'], ['John Rhodes Two', 'JR2'], ['Rankin Arena', 'RNK'], ['Essar Centre', 'ESSR'], ['McMeeken Arena', 'MCK'], ['Not Applicable', 'NA']]
 
-  = f.input :is_game, :label => 'This is a Game', :hint => 'Leave Blank for a Practice'
-  = f.input :is_draft_game, :label => 'This is a Draft Game'
-  = f.input :display_change, :label => 'Highlight Game Change', :hint => 'Use if This is change in schedule'
+  = f.input :is_game, :label => 'This is a Game', :as => :radio, :checked => true, :hint => 'Select NO if a practice'
+  = f.input :is_change, :label => 'Highlight Schedule Change', :as => :boolean, :hint => 'Highlights the change in schedule on the league and team pages'
+  = f.input :is_draft_game, :label => 'This is a Draft Game', :as => :boolean
 
-  = f.input :scheduled_date, :start_year => Date.today.year, :end_year => Date.today.year + 1, :twelve_hour => true, :minute_step => 15, :order => [:month, :day, :year]
+  = f.input :scheduled_date, :start_year => Date.today.year, :end_year => Date.today.year + 1, :twelve_hour => true, :minute_step => 15, :order => [:month, :day, :year], :hint => '13-1:00pm, 14-2:00pm, 15-3:00pm, 16-4:00pm, 17-5:00pm, 18-6:00pm, 19-7:00pm, 20-8:00pm'
 	
 
   = f.button :submit

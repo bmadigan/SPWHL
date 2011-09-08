@@ -1,33 +1,31 @@
-<% title "Schedules" %>
+<% title "League Schedules" %>
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1>SPWHL All Schedules</h1>
+	
+	<table class="blue-grey">
+	  <tr>
+	    <th width="340">League</th>
+	    <th width="120">View</th>
+	  </tr>
+	  <% for league in @leagues %>
+	    <tr>
+	      <td><%= league.name %></td>
+				<td><%= link_to "Full Schedule", schedule_path(league.id), :method => :get %></td>
+	    </tr>
+	  <% end %>
+	</table>
+	
+</div>
 
-<table class="admin-tbl" cellspacing="0">
-  <tr>
-		<th width="55">League</th>
-		<th width="75">Type</th>
-    <th width="135">Home</th>
-		<th width="135">Visting</th>
-		<th width="45">Arena</th>
-    <th width="165">Date</th>
-		<th colspan="2">Manage</th>
-  </tr>
-  <% for schedule in @schedules %>
-    <tr>
-			<td><%= schedule.league.name %></td>
-			<% if schedule.is_game? %>
-				<td>Game</td>
-			<% else %>
-				<td>Practice</td>
-			<% end %>
-      <td><%= schedule.hometeam.name %></td>
-			<td><%= schedule.awayteam.name %></td>
-			<td><%= schedule.arena %></td>
-      <td><%= schedule.formatted_scheduled_date %></td>
-
-			<td><%= button_to "E", edit_schedule_path(schedule.id), :method => :get %></td>
-			<td><%= button_to "X", schedule_path(schedule.id), :method => :delete, :confirm => "Are you sure?" %></td>
-
-    </tr>
+<div class="grid_5 article-side">
+	<h4>LEAGUE SCHEDULES</h4>
+	<hr>	
+	<% for l in @leagues %>
+      &raquo <%= link_to l.name, schedule_path(l) %><br/>
   <% end %>
-</table>
+</div>
 
-<p><%= link_to "New Schedule", new_schedule_path %></p>
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

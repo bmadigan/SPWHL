@@ -1,24 +1,74 @@
-<% title "Team Schedule" %>
+<% title @team.name %>
 
-<p>
-  <strong>Team:</strong>
-  <%= @team_schedule.team_id %>
-</p>
-<p>
-  <strong>Event Date:</strong>
-  <%= @team_schedule.event_date %>
-</p>
-<p>
-  <strong>Event Title:</strong>
-  <%= @team_schedule.event_title %>
-</p>
-<p>
-  <strong>Event Content:</strong>
-  <%= @team_schedule.event_content %>
-</p>
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @team.name %></h1>
+	
+	<div class="page-content">
+		<h2><%= @ts.event_title %></h2>
+		<p>
+		  <strong>Event Date:</strong> <%= reg_short_date(@ts.event_date) %> at <%= @ts.scheduled_time %>
+		</p>
 
-<p>
-  <%= link_to "Edit", edit_team_schedule_path(@team_schedule) %> |
-  <%= link_to "Destroy", @team_schedule, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", team_schedules_path %>
-</p>
+		<%= sanitize(@ts.event_content) %>
+
+	</div>
+
+</div>
+
+<div class="grid_5 article-side">
+
+	&raquo <%= link_to "Team Page", team_path(@team.id) %><br/>
+	&raquo <%= link_to "Full Schedule", team_full_schedule_path(@team.id) %><br/>
+	&raquo <%= link_to "Team Roster", team_roster_path(@team.id) %><br/>
+	<br/>
+	
+	<h4>LEAGUE SCHEDULE</h4>
+	<hr>
+	<% if @league_schedule.nil? %>
+		<p>No Upcoming Scheduled Games</p>
+	<% else %>
+		<% for lsch in @league_schedule %>
+		
+			<% if lsch.is_game? %>
+				<div class="small-schedule">
+					<span class="dark"><strong><%= reg_short_date(lsch.scheduled_date)%></strong></span><br/>
+					<span class="dark">GAME </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
+					<%= lsch.hometeam.name %> vs <%= lsch.awayteam.name %><br/>
+					<%= lsch.arena %> Arena
+				</div>
+			<% else %>
+				<div class="small-schedule">
+					<span class="dark"><strong><%= reg_short_date(lsch.scheduled_date)%></strong></span><br/>
+					<span class="dark">PRACT </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
+					<%= lsch.hometeam.name %> with <%= lsch.awayteam.name %><br/>
+					<%= lsch.arena %> Arena
+				</div>
+			<% end %>
+		
+	  <% end %>
+	<% end %>
+	
+	<br/>
+	<h4>TEAM SCHEDULE</h4>
+	<hr>
+	<% if @team_schedule.nil? %>
+		<p>No Upcoming Team Scheduled Events</p>
+	<% else %>
+		<% for tsch in @team_schedule %>
+			<div class="small-schedule">
+				<span class="dark"><strong><%= reg_short_date(tsch.event_date)%></strong></span><br/>
+				<span class="dark"><strong><%= tsch.event_title %></strong></span><br/>
+				at <span class="dark"><%= tsch.scheduled_time %></span><br/>
+				<%= link_to "View Details", team_schedule_path %>
+			</div>
+		<% end %>
+	<% end %>
+	
+
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

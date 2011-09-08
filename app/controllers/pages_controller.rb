@@ -11,12 +11,26 @@ class PagesController < ApplicationController
                             }
                             
   def index
+    #@pages = Page.all
+    redirect_to root_path
+  end
+  
+  def admin_index
     @pages = Page.all
   end
 
   def show
     @page = Page.find(params[:id])
     @assets = @page.assets
+    
+    # get the parents children for the submenu
+    if(@page.parent_id == 0)
+      @submenu = @page.children
+    else
+      @parent = @page.root
+      @submenu = @parent.children
+    end
+    
   end
 
   def new
@@ -55,7 +69,7 @@ class PagesController < ApplicationController
   
   private
   def choose_layout
-    if ['show'].include? action_name
+    if ['show', 'index'].include? action_name
       'application'
     else
       'admin'

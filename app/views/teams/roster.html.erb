@@ -1,0 +1,82 @@
+<% title @team.name %>
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @team.name  %> Rosters</h1>
+	
+
+		<table class="blue-grey">
+			<tr>
+				<th width="55">JERSEY</th>
+				<th width="300">NAME</th>
+				<th width="150">POSITION</th>
+			</tr>
+
+			<% for roster in @team.rosters%>
+				<tr>
+					<td align="center"><%= roster.jersey_number %></td>
+					<td><%= roster.full_name %></td>
+					<td><%= roster.position %></td>
+				</tr>
+			<% end %>
+		
+		</table>
+
+
+</div>
+
+<div class="grid_5 article-side">
+	&raquo <%= link_to "Team Page", team_path %><br/>
+	&raquo <%= link_to "Full Schedule", team_full_schedule_path %><br/>
+	&raquo <%= link_to "Team Roster", team_roster_path %><br/>
+	<br/>
+	
+	<h4>LEAGUE SCHEDULE</h4>
+	<hr>
+	<% if @league_schedule.nil? %>
+		<p>No Upcoming Scheduled Games</p>
+	<% else %>
+		<% for lsch in @league_schedule %>
+		
+			<% if lsch.is_game? %>
+				<div class="small-schedule">
+					<span class="dark"><strong><%= reg_short_date(lsch.scheduled_date)%></strong></span><br/>
+					<span class="dark">GAME </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
+					<%= lsch.hometeam.name %> vs <%= lsch.awayteam.name %><br/>
+					<%= lsch.arena %> Arena
+				</div>
+			<% else %>
+				<div class="small-schedule">
+					<span class="dark"><strong><%= reg_short_date(lsch.scheduled_date)%></strong></span><br/>
+					<span class="dark">PRACT </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
+					<%= lsch.hometeam.name %> with <%= lsch.awayteam.name %><br/>
+					<%= lsch.arena %> Arena
+				</div>
+			<% end %>
+		
+	  <% end %>
+	<% end %>
+	
+	<br/>
+	<h4>TEAM SCHEDULE</h4>
+	<hr>
+	<% if @team_schedule.nil? %>
+		<p>No Upcoming Team Scheduled Events</p>
+	<% else %>
+		<% for tsch in @team_schedule %>
+			<div class="small-schedule">
+				<span class="dark"><strong><%= reg_short_date(tsch.event_date)%></strong></span><br/>
+				<span class="dark"><strong><%= tsch.event_title %></strong></span><br/>
+				at <span class="dark"><%= tsch.scheduled_time %></span><br/>
+				<%= link_to "View Details", team_schedule_path(tsch) %>
+			</div>
+		<% end %>
+	<% end %>
+
+
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

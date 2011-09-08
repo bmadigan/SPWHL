@@ -11,11 +11,8 @@
 		<table class="news-tbl">
 		<% for article in @articles %>
 		<tr>
-			<td class="date" width="80" align="center">
-				<span class="month"><%= news_date_month(article.created_at) %></span><br />
-				<span class="day"><%= news_date_day(article.created_at) %></span>
-			</td>
-			<td width="620" style="padding-left:15px;"><%= link_to article.article_title, article %></td>
+			<td width="180" align="right"><%= reg_short_date(article.created_at) %></td>
+			<td width="520" style="padding-left:25px;"><%= link_to article.article_title, article %></td>
 		</tr>
 		<% end %>
 		</table>

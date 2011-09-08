@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831024243) do
+ActiveRecord::Schema.define(:version => 20110906192205) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -58,9 +58,17 @@ ActiveRecord::Schema.define(:version => 20110831024243) do
     t.datetime "created_at"
   end
 
+  create_table "page_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "page_title"
+    t.string   "page_description"
     t.text     "page_content"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,7 +93,10 @@ ActiveRecord::Schema.define(:version => 20110831024243) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "arena"
-    t.boolean  "display_change"
+    t.boolean  "is_change"
+    t.integer  "home_team_score"
+    t.integer  "away_team_score"
+    t.boolean  "set_standings",   :default => false
   end
 
   create_table "seasons", :force => true do |t|
@@ -110,6 +121,11 @@ ActiveRecord::Schema.define(:version => 20110831024243) do
     t.text     "team_page_content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "goals_for",         :default => 0
+    t.integer  "goals_against",     :default => 0
+    t.integer  "wins",              :default => 0
+    t.integer  "loses",             :default => 0
+    t.integer  "ties",              :default => 0
   end
 
   create_table "tournaments", :force => true do |t|

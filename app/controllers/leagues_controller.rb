@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   load_and_authorize_resource #cancan
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :standings]
   
   layout :choose_layout
   
@@ -18,13 +18,24 @@ class LeaguesController < ApplicationController
     @leagues = League.all
     # In this index, we are going to use it in the public area.
     # For a list of admin league listings, see the admin_index below
-    @page = Page.find(3) #3 is the pkid for the league.
+    @page = Page.find(3) #3 is the pkid for the league. Its the pages table.
   end
   
   def admin_index
     @leagues = League.all
   end
 
+  def admin_standings
+    @league = League.find(params[:id])
+    @schedules = Schedule.not_in_standings(@league)
+  end
+  
+  def standings
+    @league = League.find(params[:id])
+    @teams = @league.teams
+    @steams = Team.select_by_standings(@league.id)
+  end
+  
   def show
     @league = League.find(params[:id])
     # Get the team listings for this leage.
@@ -62,10 +73,11 @@ class LeaguesController < ApplicationController
     @league.destroy
     redirect_to leagues_url, :notice => "Successfully destroyed league."
   end
+
   
   private
   def choose_layout
-    if ['show', 'index'].include? action_name
+    if ['show', 'index', 'standings'].include? action_name
       'application'
     else
       'admin'

@@ -14,19 +14,14 @@
 </div>
 
 <div class="grid_5 article-side">
-	<h4>TEAMS</h4>
+	<h4>TEAM PAGES</h4>
 	<hr>	
 	<% for team in @teams %>
       &raquo <%= link_to team.name, team_path(team) %><br/>
   <% end %>
 	
-	<br/>
-	<h4>LEAGUE INFO</h4>
-	<hr>
-	&raquo <a href="#">General Info</a><br/>
-	&raquo <a href="#">Rosters</a><br/>
-	&raquo <a href="#">Standings</a><br/>
-	&raquo <a href="#">Schedule</a><br/>
+	<%= render :partial => 'shared/league_side_nav' %>
+
 </div>
 
 <div class="grid_1">&nbsp;</div><!--spacer-->

@@ -1,34 +1,53 @@
-<% title "Schedule" %>
+<% title "League Schedule" %>
 
-<p>
-  <strong>League:</strong>
-  <%= @schedule.league_id %>
-</p>
-<p>
-  <strong>Home Team:</strong>
-  <%= @schedule.home_team_id %>
-</p>
-<p>
-  <strong>Away Team:</strong>
-  <%= @schedule.away_team_id %>
-</p>
-<p>
-  <strong>Is Game:</strong>
-  <%= @schedule.is_game %>
-</p>
-<p>
-  <strong>Is Draft Game:</strong>
-  <%= @schedule.is_draft_game %>
-</p>
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
 
-<p>
-  <strong>Scheduled Date:</strong>
-  <%= @schedule.scheduled_date %>
-</p>
+	<h1><%= @league.name  %> Schedule</h1>
+	
+	<p>NOTE: Schedule Changes are <span style="color:#cc0000;">flagged as red</span></p>
+	
+  <% @schedule_days.each do |day, schedules| %>  
+	<table class="blue-grey">
+		<tr>
+			<td colspan="5" class="day"><strong><%= day.strftime("%A %B %d, %Y") %></strong></td>
+		</tr>
+		<tr>
+			<th>TIME</th>
+			<th>TYPE</th>
+			<th>HOME</th>
+			<th>VISITOR</th>
+			<th>ARENA</th>
+		</tr>
+		<% schedules.each do |schedule| %> 
+			<tr>
+				<td width="65" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.scheduled_time %></td>
+				<td width="80" <% if(schedule.is_change)%> class="change" <%end%>>
+					<% if schedule.is_game? %>
+						GAME
+					<% else %>
+						PRACT
+					<% end %>
+				</td>
+				<td width="200" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.hometeam.name %></td>
+				<td width="200" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.awayteam.name %></td>
+				<td width="75" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.arena %></td>
+			</tr>
+	  <% end %>
+		</table>
+	<% end %>
 
+	
+</div>
 
-<p>
-  <%= link_to "Edit", edit_schedule_path(@schedule) %> |
-  <%= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", schedules_path %>
-</p>
+<div class="grid_5 article-side">
+	<h4>LEAGUE SCHEDULES</h4>
+	<hr>	
+	<% for l in @leagues %>
+      &raquo <%= link_to l.name, schedule_path(l) %><br/>
+  <% end %>
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>
+

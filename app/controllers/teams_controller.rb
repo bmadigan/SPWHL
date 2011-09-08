@@ -12,7 +12,8 @@ class TeamsController < ApplicationController
                             }
   
   load_and_authorize_resource #cancan
-  before_filter :authenticate_user!, :except => [:show, :index]
+  #before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :only => [:new, :edit]
   
   def index
     @teams = Team.all
@@ -20,8 +21,30 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @league_schedule = @team.upcoming_league_schedule
+    @team_schedule = @team.upcoming_team_schedule
+  end
+  
+  def full_schedule
+    @team = Team.find(params[:id])
     
     @league_schedule = @team.upcoming_league_schedule
+    @team_schedule = @team.upcoming_team_schedule
+    
+    @full_schedule = @team.full_schedule
+    @full_team_schedule = @team.full_team_schedule
+    
+    @schedule_months = @full_schedule.group_by { |s| s.scheduled_date.beginning_of_month } 
+  end
+  
+  def roster
+    @team = Team.find(params[:id])
+    
+    #@rosters = @team.roster
+    
+    @league_schedule = @team.upcoming_league_schedule
+    @team_schedule = @team.upcoming_team_schedule
+    
   end
 
   def new
@@ -56,9 +79,16 @@ class TeamsController < ApplicationController
     redirect_to teams_url, :notice => "Successfully destroyed team."
   end
   
+  # Used for getting teams for select dropdown
+  def get_select_teams
+    @teams = Team.where("league_id = ?", params[:league_id])
+    
+    render :partial => "teams/select_teams"
+  end
+  
   private
   def choose_layout
-    if ['show'].include? action_name
+    if ['show', 'full_schedule', 'roster'].include? action_name
       'application'
     else
       'admin'

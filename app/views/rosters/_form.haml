@@ -1,0 +1,12 @@
+= simple_form_for @roster do |f| 
+  = f.error_messages
+
+  = f.association :team, :include_blank => "Select A Team"
+
+  = f.input :first_name, :label => 'First Name'
+  = f.input :last_name, :label => 'Last Name'
+  = f.input :position, :include_blank => false, :label => 'Players Position', :collection => [['Forward', 'Forward'], ['Defence', 'Defence'], ['Goalie', 'Goalie'], ['Coach', 'Coach'], ['Assistant', 'Assistant'], ['Trainer', 'Trainer'], ['Manager', 'Manager']]
+  = f.input :jersey_number, :label => 'Jersey Number'
+
+
+  = f.button :submit

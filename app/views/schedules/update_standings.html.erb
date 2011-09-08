@@ -1,0 +1,31 @@
+<% title "Update Game Standings" %>
+
+<p>Simply type in the scores and click Save!</p>
+
+
+<h2>Game Date: <%= @schedule.formatted_scheduled_date %></h2>
+
+<%= form_tag save_standings_path(@schedule), :method => :put do %>
+<table border="0">
+<tr>
+	<td width="400" valign="top">
+		<h2><%= @schedule.hometeam.name %></h2>
+		<p style="margin:-10px 0 0 0px; color:#888; font-size:0.8em;">HOME TEAM</p>
+	</td>
+	<td width="400"  valign="top">
+		<h2><%= @schedule.awayteam.name%></h2>
+		<p style="margin:-10px 0 0 0px; color:#888; font-size:0.8em;">AWAY TEAM</p>
+	</td>
+</tr>
+<tr>
+	<td width="400" valign="top">
+		<%= text_field(:schedule, :home_team_score, :style => 'padding:6px; font-size:1.4em; width:55px; text-align:center;' ) %>
+	</td>
+	<td width="400" valign="top">
+		<%= text_field(:schedule, :away_team_score, :style => 'padding:6px; font-size:1.4em; width:55px; text-align:center;' ) %>
+	</td>
+</tr>
+</table>
+
+  <p><%= submit_tag "Save Game Information" %></p>
+<% end %>

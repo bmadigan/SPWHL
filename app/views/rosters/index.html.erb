@@ -1,25 +1,43 @@
-<% title "Rosters" %>
+<% title @league.name %>
 
-<table class="admin-tbl" cellspacing="0">
-  <tr>
-    <th>Team</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Position</th>
-    <th>Jersey Number</th>
-  </tr>
-  <% for roster in @rosters %>
-    <tr>
-      <td><%= roster.team_id %></td>
-      <td><%= roster.first_name %></td>
-      <td><%= roster.last_name %></td>
-      <td><%= roster.position %></td>
-      <td><%= roster.jersey_number %></td>
-      <td><%= link_to "Show", roster %></td>
-      <td><%= link_to "Edit", edit_roster_path(roster) %></td>
-      <td><%= link_to "Destroy", roster, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @league.name  %> Rosters</h1>
+	
+	<% for team in @teams %>
+		<h3><%= team.name.upcase %></h3>
+		<table class="blue-grey">
+			<tr>
+				<th width="55">JERSEY</th>
+				<th width="300">NAME</th>
+				<th width="150">POSITION</th>
+			</tr>
+
+			<% for roster in team.rosters%>
+				<tr>
+					<td align="center"><%= roster.jersey_number %></td>
+					<td><%= roster.full_name %></td>
+					<td><%= roster.position %></td>
+				</tr>
+			<% end %>
+		
+		</table>
+	<% end %>
+
+</div>
+
+<div class="grid_5 article-side">
+	<h4>TEAMS</h4>
+	<hr>	
+	<% for team in @teams %>
+      &raquo <%= link_to team.name, team_path(team) %><br/>
   <% end %>
-</table>
+	
+	<%= render :partial => 'shared/league_side_nav' %>
 
-<p><%= link_to "New Roster", new_roster_path %></p>
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

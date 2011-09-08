@@ -1,0 +1,24 @@
+<% title "Pages" %>
+
+
+<table class="admin-tbl" cellspacing="0">
+  <tr>
+		<th width="200">Page Title</th>
+		<th width="350">Desc</th>
+		<th colspan="2">Manage</th>
+  </tr>
+  <% for page in @pages %>
+    <tr>
+			<td><%= page.page_title %></td>
+      <td><%= page.page_description %></td>
+			<td><%= button_to "E", edit_page_path(page.id), :method => :get %></td>
+			<td>
+				<% if(page.parent_id != 0)%>
+					<%= button_to "X", page_path(page.id), :method => :delete, :confirm => "Are you sure?" %>
+				<% end %>
+			</td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Page", new_page_path %></p>

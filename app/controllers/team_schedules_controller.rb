@@ -1,5 +1,5 @@
 class TeamSchedulesController < ApplicationController
-  layout 'admin'
+  layout :choose_layout
   
   #load_and_authorize_resource #cancan
   #before_filter :authenticate_user!, :except => [:show]
@@ -10,8 +10,11 @@ class TeamSchedulesController < ApplicationController
   end
 
   def show
-    @team = Team.find_by_manager_id(current_user)
-    @team_schedule = TeamSchedule.find(params[:id])
+    @ts = TeamSchedule.find(params[:id])
+    
+    @team = Team.find(@ts.team_id)
+    @league_schedule = @team.upcoming_league_schedule
+    @team_schedule = @team.upcoming_team_schedule
   end
 
   def new
@@ -51,4 +54,14 @@ class TeamSchedulesController < ApplicationController
     @team_schedule.destroy
     redirect_to team_schedules_url, :notice => "Successfully destroyed team schedule."
   end
+  
+  private
+  def choose_layout
+    if ['show'].include? action_name
+      'application'
+    else
+      'admin'
+    end
+  end
+  
 end

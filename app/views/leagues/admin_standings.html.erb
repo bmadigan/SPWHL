@@ -1,0 +1,23 @@
+<% title "Update League Standings" %>
+
+	<h4>The following games have been scheduled, but not entered into the standings</h4>
+	
+	<table class="admin-tbl" cellspacing="0">
+	  <tr>
+	    <th width="220">Game Date</th>
+	    <th width="175">Home Team</th>
+	    <th width="175">Visiting Team</th>
+			<th width="115">Set</th>
+	  </tr>
+		<% for schedule in @schedules %>
+		
+		 	<tr>
+				<td><%= schedule.formatted_scheduled_date %></td>
+				<td><%= schedule.hometeam.name %></td>
+				<td><%= schedule.awayteam.name %></td>
+				<td><%= link_to "Update Score", update_standings_path(schedule) %></td>
+			</tr>
+		
+		<% end %>
+	</table>
+	

@@ -2,10 +2,12 @@ class SchedulesController < InheritedResources::Base
   layout :choose_layout
   before_filter :authenticate_user!, :except => [:index, :show]
   
-    has_scope :page, :default => 1
+  has_scope :page, :default => 1
 
   def index
-    @schedules = Schedule.all
+    #@schedules = Schedule.all
+    @leagues = League.all
+    #@teams = @leagues.team
   end
   
   def admin_index
@@ -18,7 +20,13 @@ class SchedulesController < InheritedResources::Base
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
+    #@schedule = Schedule.find(params[:id])
+    # Show by league id
+    @league = League.find(params[:id])
+    @leagues = League.all
+    @schedules = Schedule.where("league_id = ?", params[:id])
+    
+    @schedule_days = @schedules.group_by { |s| s.scheduled_date.beginning_of_day } 
   end
 
   def new
@@ -59,6 +67,31 @@ class SchedulesController < InheritedResources::Base
     redirect_to schedules_url, :notice => "Successfully destroyed schedule."
   end
   
+  def update_standings
+    @schedule = Schedule.find(params[:id])
+  end
+  
+  def save_standings
+    @schedule = Schedule.find(params[:id])
+    @schedule.set_standings = true
+    
+    # Team Logic
+    # ---------------------------
+    # Update Home Team
+    @ht = Team.find(@schedule.home_team_id)
+    @at = Team.find(@schedule.away_team_id)
+    
+    if @schedule.update_attributes(params[:schedule])
+      
+      @ht.update_team_standings(@schedule.home_team_score, @schedule.away_team_score)
+      @at.update_team_standings(@schedule.away_team_score, @schedule.home_team_score)
+      
+      redirect_to admin_league_standings_path(@schedule.league_id), :notice  => "Successfully added standings"
+    else
+      render :action => 'update_standings', :notice => "There was a problem saving the standings. Please try again."
+    end
+  end
+  
   private
   def choose_layout
     if ['show', 'index'].include? action_name
@@ -67,4 +100,5 @@ class SchedulesController < InheritedResources::Base
       'admin'
     end
   end
+
 end

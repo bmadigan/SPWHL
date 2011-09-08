@@ -14,9 +14,9 @@
 
 <div class="grid_5 article-side">
 
-	&raquo <a href="#">Team Page</a><br/>
-	&raquo <a href="#">Full Schedule</a><br/>
-	&raquo <a href="#">Team Roster</a><br/>
+	&raquo <%= link_to "Team Page", team_path %><br/>
+	&raquo <%= link_to "Full Schedule", team_full_schedule_path %><br/>
+	&raquo <%= link_to "Team Roster", team_roster_path %><br/>
 	<br/>
 	
 	<h4>LEAGUE SCHEDULE</h4>
@@ -48,6 +48,18 @@
 	<br/>
 	<h4>TEAM SCHEDULE</h4>
 	<hr>
+	<% if @team_schedule.nil? %>
+		<p>No Upcoming Team Scheduled Events</p>
+	<% else %>
+		<% for tsch in @team_schedule %>
+			<div class="small-schedule">
+				<span class="dark"><strong><%= reg_short_date(tsch.event_date)%></strong></span><br/>
+				<span class="dark"><strong><%= tsch.event_title %></strong></span><br/>
+				at <span class="dark"><%= tsch.scheduled_time %></span><br/>
+				<%= link_to "View Details", team_schedule_path(tsch) %>
+			</div>
+		<% end %>
+	<% end %>
 	
 
 </div>

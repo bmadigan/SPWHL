@@ -1,9 +1,15 @@
 class RostersController < ApplicationController
+  layout :choose_layout
+  
   load_and_authorize_resource #cancan
   before_filter :authenticate_user!, :except => [:show, :index]
   
   def index
-    @rosters = Roster.all
+    # Displays Leagues/:id/Rosters
+    @league = League.find(params[:league_id])
+    @teams = @league.teams
+    
+    #@rosters = @teams.rosters
   end
 
   def show
@@ -17,7 +23,7 @@ class RostersController < ApplicationController
   def create
     @roster = Roster.new(params[:roster])
     if @roster.save
-      redirect_to @roster, :notice => "Successfully created roster."
+      redirect_to new_roster_path, :notice => "Successfully created roster."
     else
       render :action => 'new'
     end
@@ -41,4 +47,14 @@ class RostersController < ApplicationController
     @roster.destroy
     redirect_to rosters_url, :notice => "Successfully destroyed roster."
   end
+  
+  private
+  def choose_layout
+    if ['show', 'index'].include? action_name
+      'application'
+    else
+      'admin'
+    end
+  end
+  
 end
