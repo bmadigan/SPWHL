@@ -16,7 +16,7 @@
     %li= link_to "Team Schedule", team_schedules_path(@schedule)
 
   -if current_user.director?
-    %li= link_to "League Standings", edit_team_path(@league)
-    %li= link_to "League Schedule", team_schedules_path(@league)
-    %li= link_to "League Page", edit_league_path(@league)
-    %li= link_to "Team Rosters", edit_roster_path(@league)
+    %li= link_to "League Standings", admin_league_standings_path(current_user.league)
+    %li= link_to "League Schedule", schedule_director_admin_path(current_user.league)
+    %li= link_to "League Page", edit_league_path(current_user.league)
+    %li= link_to "Teams", league_teams_path(current_user.league)

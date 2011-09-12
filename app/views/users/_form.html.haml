@@ -6,6 +6,6 @@
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  = f.input :role_type, :include_blank => false, :label => 'User Type', :collection => [['Webmaster', 'God'], ['League Director', 'Director'], ['Team Manager', 'Manager']]
+  = f.input :role_type, :include_blank => false, :label => 'User Type', :collection => [['Webmaster', 'God'], ['League Director', 'Director'], ['Team Manager', 'Manager'], ['Executive', 'Executive']]
 
   = f.button :submit

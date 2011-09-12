@@ -1,4 +1,4 @@
-<% title "Team Manager" %>
+<% title "Update Team Info" %>
 
 <table class="admin-tbl" cellspacing="0">
   <tr>
@@ -14,10 +14,19 @@
       <td><%= team.manager.name %></td>
 
 			<td><%= button_to "E", edit_team_path(team.id), :method => :get %></td>
-			<td><%= button_to "X", team_path(team.id), :method => :delete, :confirm => "Are you sure?" %></td>
+			<td>
+			<% if current_user.webmaster? %>
+				<%= button_to "X", team_path(team.id), :method => :delete, :confirm => "Are you sure?" %>
+			<% end %>
+			<% if current_user.director? %>
+				<%= button_to "Rosters", team_rosters_admin_path(team.id), :method => :delete, :confirm => "Are you sure?" %>
+			<% end %>
+			</td>
 
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Team", new_team_path %></p>
+<% if current_user.webmaster? %>
+	<p><%= link_to "New Team", new_team_path %></p>
+<% end %>

@@ -5,13 +5,9 @@ class RostersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   
   def index
-    # Displays Leagues/:id/Rosters
-    @league = League.find(params[:league_id])
-    @teams = @league.teams
-    
-    #@rosters = @teams.rosters
+    @team = Team.find(params[:team_id])
   end
-
+  
   def show
     @roster = Roster.find(params[:id])
   end
@@ -36,7 +32,7 @@ class RostersController < ApplicationController
   def update
     @roster = Roster.find(params[:id])
     if @roster.update_attributes(params[:roster])
-      redirect_to @roster, :notice  => "Successfully updated roster."
+      redirect_to admin_index_path, :notice  => "Successfully updated roster."
     else
       render :action => 'edit'
     end

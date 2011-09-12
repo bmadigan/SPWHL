@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  rescue_from CanCan::AccessDenied do |exception|
+  # Cancan 1.5
+  # rescue_from CanCan::AccessDenied do |exception|
+  #     redirect_to root_url, :alert => exception.message
+  #   end
+  
+  enable_authorization #cancan 2.0
+  enable_authorization do |exception|
     redirect_to root_url, :alert => exception.message
   end
   

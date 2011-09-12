@@ -29,13 +29,13 @@
 		<td width="300" valign="top">
 			<h3>Update League Standings</h3>
 			<p>Update any games that have been already played.
-				<br/><%= link_to "Click To Manage", admin_league_standings_path(@league.id), :method => :get %></p>
+				<br/><%= link_to "Click To Manage", admin_league_standings_path(current_user.league), :method => :get %></p>
 		</td>
 		<td width="100"><img src="/images/admin/ico-standings.png"></td>
 		<td width="300" valign="top">
 			<h3>Manage League Schedule</h3>
 			<p>Do you need to make changes to your schedule?
-				<br/><%= link_to "Click To Manage", admin_index_path %></p>
+				<br/><%= link_to "Click To Manage", schedule_director_admin_path(current_user.league) %></p>
 		</td>
 	</tr>
 	
@@ -44,13 +44,13 @@
 		<td width="300">
 			<h3>Update League Page</h3>
 			<p>This is the main homepage for your division. General news and updates.
-				<br/><%= link_to "Click To Manage", admin_index_path %></p>
+				<br/><%= link_to "Click To Manage", edit_league_path(current_user.league) %></p>
 		</td>
 		<td width="100"><img src="/images/admin/ico-jersey.png"></td>
 		<td width="300">
-			<h3>Manage Team Rosters</h3>
-			<p>This is where you can update players, coaches, trainers and managers.
-				<br/><%= link_to "Click To Manage", admin_index_path %> </p>
+			<h3>Manage Teams Info</h3>
+			<p>This is where you can update team names, team rosters, coaches, trainers and managers.
+				<br/><%= link_to "Click To Manage", league_teams_path(current_user.league) %> </p>
 		</td>
 	</tr>
 	</table>

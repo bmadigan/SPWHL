@@ -22,7 +22,7 @@
 		</tr>
 		<% schedules.each do |schedule| %> 
 			<tr>
-				<td><%= schedule.scheduled_short_date %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.scheduled_short_date %></td>
 				<td width="55" <% if(schedule.is_change)%> class="change" <%end%>>
 					<%= schedule.scheduled_time %>
 				</td>

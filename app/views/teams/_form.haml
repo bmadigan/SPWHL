@@ -2,10 +2,9 @@
 = simple_form_for @team do |f| 
   = f.error_messages
 
-  -if current_user.manager?
+  = f.input :name, :label => 'Team Name'
 
-  - else
-    = f.input :name, :label => 'Team Name'
+  -if current_user.webmaster?
     = f.association :league, :include_blank => false
     = f.association :manager
     

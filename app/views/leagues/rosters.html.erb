@@ -1,0 +1,43 @@
+<% title @league.name %>
+
+<!-- INSIDE ARTICLE TEMPLATE -->
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="grid_17">
+	
+	<h1><%= @league.name  %> Rosters</h1>
+	
+	<% for team in @teams %>
+		<h3><%= team.name.upcase %></h3>
+		<table class="blue-grey">
+			<tr>
+				<th width="55">JERSEY</th>
+				<th width="300">NAME</th>
+				<th width="150">POSITION</th>
+			</tr>
+
+			<% for roster in team.rosters%>
+				<tr>
+					<td align="center"><%= roster.jersey_number %></td>
+					<td><%= roster.full_name %></td>
+					<td><%= roster.position %></td>
+				</tr>
+			<% end %>
+		
+		</table>
+	<% end %>
+
+</div>
+
+<div class="grid_5 article-side">
+	<h4>TEAMS</h4>
+	<hr>	
+	<% for team in @teams %>
+      &raquo <%= link_to team.name, team_path(team) %><br/>
+  <% end %>
+	
+	<%= render :partial => 'shared/league_side_nav' %>
+
+</div>
+
+<div class="grid_1">&nbsp;</div><!--spacer-->
+<div class="clear">&nbsp;</div>

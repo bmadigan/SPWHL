@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :article_title, :article_content, :summary, :assets_attributes
+  attr_accessible :article_title, :article_content, :summary, :assets_attributes, :article_image
   
   has_many :assets
   accepts_nested_attributes_for :assets, :allow_destroy => true

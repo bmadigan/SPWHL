@@ -9,20 +9,31 @@ class Ability
     
     # Public viewable actions. :read only means :show and :index
     # This is needed otherwise we can access denied.
-    alias_action :full_schedule, :standings, :roster, :to => :viewable_public  
+    alias_action :full_schedule, :standings, :roster, :rosters, :to => :viewable_public  
     
     # LEAGUE DIRECTOR ABILITIES
     # =====================================
     if user.role_type == 'Director'
-      
+
         can :create, Schedule
         can :update, Schedule do |schedule|
           schedule.try(:user) == user
         end
-        can [:manage], Roster, :team => { :league_id => { :league => { :director_id => user.id }}}
-        can [:modify_info], League, :director_id => user.id
+        
+        can [:modify_info], Team #, :team => { :league_id => { :league => { :director_id => user.id }}}
+        
+        can [:manage], Roster#, :team => { :league_id => { :league => { :director_id => user.id }}}
+        
+        #can [:modify_info], League, :director_id => user.id
+        can :access, :leagues, :director_id => user.id
+        
         can [:admin_standings], League, :director_id => user.id
+        can [:update_standings], :schedules
+        
+        can :director_index, :schedules
+        
         can :read, :all
+        can :viewable_public, :all
         
     # TEAM MANAGER ABILITIES
     # =====================================
@@ -37,7 +48,7 @@ class Ability
     # =====================================
     else
         can :read, :all
-        can :viewable_public, :all
+        can :read, :viewable_public
     end
     
     # WEBMASTER CAN DO EVERYTHING!

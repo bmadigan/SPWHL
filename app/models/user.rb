@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :name, :email, :password, :password_confirmation, :remember_me, :role_type
   
+  has_one :league, :foreign_key => 'director_id', :class_name => 'League'
+  has_one :team, :foreign_key => 'manager_id', :class_name => 'Team'
+  
   def manager?
     if role_type == 'Manager'
       return true
@@ -15,6 +18,12 @@ class User < ActiveRecord::Base
   
   def director?
     if role_type == 'Director'
+      return true
+    end
+  end
+  
+  def executive?
+    if role_type == 'Executive'
       return true
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906192205) do
+ActiveRecord::Schema.define(:version => 20110908120721) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110906192205) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "summary"
+    t.string   "article_image",   :default => "default.png"
   end
 
   create_table "assets", :force => true do |t|

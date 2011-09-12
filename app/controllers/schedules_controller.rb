@@ -2,6 +2,8 @@ class SchedulesController < InheritedResources::Base
   layout :choose_layout
   before_filter :authenticate_user!, :except => [:index, :show]
   
+  load_and_authorize_resource #cancan
+  
   has_scope :page, :default => 1
 
   def index
@@ -18,6 +20,10 @@ class SchedulesController < InheritedResources::Base
     end
     @leagues = League.all
   end
+  
+  def director_index
+    @schedules = Schedule.page(params[:page]).per(15).where("league_id = ?", params[:id])
+  end
 
   def show
     #@schedule = Schedule.find(params[:id])
@@ -32,6 +38,9 @@ class SchedulesController < InheritedResources::Base
   def new
     @schedule = Schedule.new
     @schedule.scheduled_date = Time.now
+    if current_user.director?
+      @teams = Team.find_all_by_league_id(current_user.league.id)
+    end
   end
   
   def league

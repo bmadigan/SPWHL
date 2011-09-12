@@ -1,0 +1,22 @@
+<% title "Update Team Roster" %>
+
+<table class="admin-tbl" cellspacing="0">
+  <tr>
+		<th width="150">Jersey</th>
+    <th width="240">Name</th>
+    <th width="120">Position</th>
+		<th colspan="2">Manage</th>
+  </tr>
+  <% for roster in @team.rosters %>
+    <tr>
+			<td><%= roster.position %></td>
+      <td><%= roster.full_name %></td>
+      <td><%= roster.position %></td>
+			<td><%= button_to "E", edit_roster_path(roster.id), :method => :get %></td>
+			<td><%= button_to "X", roster_path(roster.id), :method => :delete, :confirm => "Are you sure?" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Roster", new_roster_path %></p>
+

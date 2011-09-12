@@ -12,11 +12,16 @@ class TeamsController < ApplicationController
                             }
   
   load_and_authorize_resource #cancan
+  
   #before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :authenticate_user!, :only => [:new, :edit]
   
   def index
-    @teams = Team.all
+    if(params[:league_id])
+      @league = League.find(params[:league_id])
+      @teams = @league.teams
+    end
+
   end
 
   def show
@@ -39,12 +44,12 @@ class TeamsController < ApplicationController
   
   def roster
     @team = Team.find(params[:id])
-    
-    #@rosters = @team.roster
-    
     @league_schedule = @team.upcoming_league_schedule
     @team_schedule = @team.upcoming_team_schedule
-    
+  end
+  
+  def admin_roster
+    @team = Team.find(params[:id])
   end
 
   def new

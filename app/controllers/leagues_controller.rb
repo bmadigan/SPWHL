@@ -1,6 +1,8 @@
 class LeaguesController < ApplicationController
+  
   load_and_authorize_resource #cancan
-  before_filter :authenticate_user!, :except => [:show, :index, :standings]
+  
+  before_filter :authenticate_user!, :except => [:show, :index, :standings, :rosters]
   
   layout :choose_layout
   
@@ -34,6 +36,11 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @teams = @league.teams
     @steams = Team.select_by_standings(@league.id)
+  end
+  
+  def rosters
+    @league = League.find(params[:id])
+    @teams = @league.teams
   end
   
   def show
@@ -77,7 +84,7 @@ class LeaguesController < ApplicationController
   
   private
   def choose_layout
-    if ['show', 'index', 'standings'].include? action_name
+    if ['show', 'index', 'standings', 'rosters'].include? action_name
       'application'
     else
       'admin'

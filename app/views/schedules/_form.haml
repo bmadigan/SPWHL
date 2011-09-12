@@ -1,9 +1,16 @@
 = simple_form_for @schedule do |f| 
   = f.error_messages
 
-  = f.association :league, :onchange => "change_team_select(this.options[this.selectedIndex].value);", :include_blank => "Select A League"
-  = f.association :hometeam, :include_blank => false
-  = f.association :awayteam, :include_blank => false
+  -if current_user.webmaster?
+    = f.association :league, :onchange => "change_team_select(this.options[this.selectedIndex].value);", :include_blank => "Select A League"
+    = f.association :hometeam, :include_blank => false
+    = f.association :awayteam, :include_blank => false
+
+  -if current_user.director?
+    = f.input :league_id, :as => :hidden, :input_html => { :value => current_user.league.id }
+    = f.association :hometeam, :collection => Team.find_all_by_league_id(current_user.league.id), :include_blank => false
+    = f.association :awayteam, :collection => Team.find_all_by_league_id(current_user.league.id), :include_blank => false
+
   = f.input :arena, :include_blank => false, :label => 'Choose Arena', :collection => [['Soo Peewee Arena', 'SPW'], ['John Rhodes One', 'JR1'], ['John Rhodes Two', 'JR2'], ['Rankin Arena', 'RNK'], ['Essar Centre', 'ESSR'], ['McMeeken Arena', 'MCK'], ['Not Applicable', 'NA']]
 
   = f.input :is_game, :label => 'This is a Game', :as => :radio, :checked => true, :hint => 'Select NO if a practice'

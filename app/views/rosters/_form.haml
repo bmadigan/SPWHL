@@ -1,7 +1,11 @@
 = simple_form_for @roster do |f| 
   = f.error_messages
 
-  = f.association :team, :include_blank => "Select A Team"
+  -if current_user.director?
+    = f.association :team, :collection => Team.find_all_by_league_id(current_user.league.id), :include_blank => false
+
+  -if current_user.webmaster?
+    = f.association :team, :include_blank => "Select A Team"
 
   = f.input :first_name, :label => 'First Name'
   = f.input :last_name, :label => 'Last Name'
