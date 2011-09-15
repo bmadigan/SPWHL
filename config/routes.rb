@@ -26,6 +26,7 @@ Soopeewee::Application.routes.draw do
   # --------------------------------------
   match '/admin/leagues/admin_index' => "leagues#admin_index", :as => 'league_admin' 
   match '/admin/articles/admin_index' => "articles#admin_index", :as => 'article_admin' 
+  match '/admin/rosters/admin_index' => "rosters#admin_index", :as => 'rosters_admin' 
   match '/admin/pages/admin_index' => "pages#admin_index", :as => 'page_admin' 
   match '/admin/schedules/admin_index' => "schedules#admin_index", :as => 'schedule_admin' 
   match '/admin/schedules/director_index/:id' => "schedules#director_index", :as => 'schedule_director_admin' 

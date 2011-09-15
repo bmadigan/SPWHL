@@ -1,3 +1,20 @@
+<% if current_user.executive? %>
+	<% title "SPW Executive Dashboard" %>
+
+	<table border="0" class="dashboard" cellpadding="8">
+	<tr>
+		<td width="100"><img src="/images/admin/ico-standings.png"></td>
+		<td width="300" valign="top">
+			<h3>Manage Pages</h3>
+			<p>Allows you to update Executive and General Information</p>
+			<p><%= link_to "Click To Manage", page_admin_path %></p>
+		</td>
+		<td width="100"></td>
+		<td width="300" valign="top">
+		</td>
+	</tr>
+	</table>
+<% end %>
 
 <% if current_user.manager? %>
 	<% title "Team Manager Dashboard" %>

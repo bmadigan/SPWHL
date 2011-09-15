@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 
-gem 'sqlite3'
+gem 'sqlite3', :group => :development
+
 
 gem "devise"
 gem "haml", ">= 3.0.0"
@@ -12,7 +13,7 @@ gem "jquery-rails"
 gem "simple_form"
 gem 'event-calendar', :require => 'event_calendar'
 #gem 'cancan'
-gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+#gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 
 gem 'tiny_mce'
 gem 'paperclip'

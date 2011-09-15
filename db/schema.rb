@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908120721) do
+ActiveRecord::Schema.define(:version => 20110914113039) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20110908120721) do
     t.integer  "home_team_score"
     t.integer  "away_team_score"
     t.boolean  "set_standings",   :default => false
+    t.string   "custom_text"
   end
 
   create_table "seasons", :force => true do |t|

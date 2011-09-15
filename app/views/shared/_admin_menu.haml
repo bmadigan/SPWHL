@@ -1,14 +1,11 @@
 %ul
   %li= link_to "Dashboard", admin_index_path
-  -if can? :manage, @league
+
+  -if current_user.webmaster?    
     %li= link_to "Leagues", league_admin_path
-  -if can? :manage, @team
     %li= link_to "Teams", teams_path
-  -if can? :manage, @roster
-    %li= link_to "Rosters", rosters_path
-  -if can? :manage, @schedule
+    %li= link_to "Rosters", rosters_admin_path
     %li= link_to "Schedules", schedule_admin_path
-  -if can? :manage, @user
     %li= link_to "User Accounts", users_path
 
   -if current_user.manager?
@@ -20,3 +17,6 @@
     %li= link_to "League Schedule", schedule_director_admin_path(current_user.league)
     %li= link_to "League Page", edit_league_path(current_user.league)
     %li= link_to "Teams", league_teams_path(current_user.league)
+
+  - if current_user.executive?
+    %li= link_to "Manage Pages", page_admin_path

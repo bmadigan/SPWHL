@@ -1,8 +1,8 @@
 class TeamSchedulesController < ApplicationController
   layout :choose_layout
   
-  #load_and_authorize_resource #cancan
-  #before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authorize, :only => [:edit, :update, :destroy ]
   
   def index
     @team = Team.find_by_manager_id(current_user)
@@ -64,4 +64,17 @@ class TeamSchedulesController < ApplicationController
     end
   end
   
+  def authorize
+     if current_user.webmaster?
+     else
+       @ts = TeamSchedule.find(params[:id])
+       @team = Team.find(@ts.team_id)
+       
+       if(@team.manager_id != current_user.id)
+         redirect_to root_url, :notice => "Authorization Failure. Invalid Team Manager"
+       end
+
+     end
+   end
+   
 end

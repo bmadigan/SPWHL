@@ -11,15 +11,16 @@ class TeamsController < ApplicationController
                               :plugins => %w{ table }
                             }
   
-  load_and_authorize_resource #cancan
-  
   #before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :authenticate_user!, :only => [:new, :edit]
+  before_filter :authorize, :only => [:admin_roster, :edit, :update, :destroy ]
   
   def index
     if(params[:league_id])
       @league = League.find(params[:league_id])
       @teams = @league.teams
+    else
+      @teams = Team.all
     end
 
   end
@@ -97,6 +98,29 @@ class TeamsController < ApplicationController
       'application'
     else
       'admin'
+    end
+  end
+  
+  def authorize
+    # @roster = Roster.find(params[:id])
+    # @team = @roster.team
+    # @league = @team.league.id
+    # if(@league.director_id != current_user.id)
+    #   redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+    # end
+    if current_user.webmaster?
+    else
+      @team = Team.find(params[:id])
+      if current_user.manager?
+        if(@team.manager_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid Team Manager"
+        end
+      else 
+        @league = @team.league
+        if(@league.director_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+        end
+      end
     end
   end
 end

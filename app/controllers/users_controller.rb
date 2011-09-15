@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   layout 'admin'
-  
-  load_and_authorize_resource #cancan
+ 
   before_filter :authenticate_user!
   
   def index

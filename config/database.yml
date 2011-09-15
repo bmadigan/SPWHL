@@ -15,8 +15,12 @@ test:
   pool: 5
   timeout: 5000
 
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+production: 
+  adapter: mysql 
+  encoding: utf8 
+  reconnect: false 
+  database: soopeewee_production
   pool: 5
-  timeout: 5000
+  username: spw_dbuser
+  password: spw2011db
+  host: mysql.soopeewee.dreamhosters.com

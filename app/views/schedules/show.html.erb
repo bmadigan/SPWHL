@@ -10,29 +10,37 @@
   <% @schedule_days.each do |day, schedules| %>  
 	<table class="blue-grey">
 		<tr>
-			<td colspan="5" class="day"><strong><%= day.strftime("%A %B %d, %Y") %></strong></td>
+			<td colspan="6" class="day"><strong><%= day.strftime("%A %B %d, %Y") %></strong></td>
 		</tr>
 		<tr>
-			<th>TIME</th>
-			<th>TYPE</th>
-			<th>HOME</th>
-			<th>VISITOR</th>
-			<th>ARENA</th>
+			<th width="65">TIME</th>
+			<th width="80">TYPE</th>
+			<th width="180">HOME</th>
+			<th width="180">VISITOR</th>
+			<th width="75">ARENA</th>
+			<th width="30"></th>
 		</tr>
 		<% schedules.each do |schedule| %> 
 			<tr>
-				<td width="65" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.scheduled_time %></td>
-				<td width="80" <% if(schedule.is_change)%> class="change" <%end%>>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.scheduled_time %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>>
 					<% if schedule.is_game? %>
 						GAME
 					<% else %>
 						PRACT
 					<% end %>
 				</td>
-				<td width="200" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.hometeam.name %></td>
-				<td width="200" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.awayteam.name %></td>
-				<td width="75" <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.arena %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.hometeam.name %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.awayteam.name %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.arena %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>>
+					<% unless schedule.custom_text.nil? %>
+						<%= schedule.custom_text %></td>
+					<% end %>
+				</td>
+				
 			</tr>
+			
 	  <% end %>
 		</table>
 	<% end %>

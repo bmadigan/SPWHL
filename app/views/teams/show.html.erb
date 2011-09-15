@@ -32,6 +32,9 @@
 					<span class="dark">GAME </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
 					<%= lsch.hometeam.name %> vs <%= lsch.awayteam.name %><br/>
 					<%= lsch.arena %> Arena
+					<% unless lsch.custom_text.nil? %>
+						<br><%= lsch.custom_text %></td>
+					<% end %>
 				</div>
 			<% else %>
 				<div class="small-schedule">
@@ -39,6 +42,9 @@
 					<span class="dark">PRACT </span> at <span class="dark"><%= lsch.scheduled_time %></span><br/>
 					<%= lsch.hometeam.name %> with <%= lsch.awayteam.name %><br/>
 					<%= lsch.arena %> Arena
+					<% unless lsch.custom_text.nil? %>
+						<br><%= lsch.custom_text %></td>
+					<% end %>
 				</div>
 			<% end %>
 		

@@ -1,15 +1,13 @@
-class SchedulesController < InheritedResources::Base
+class SchedulesController < ApplicationController
   layout :choose_layout
+  
   before_filter :authenticate_user!, :except => [:index, :show]
-  
-  load_and_authorize_resource #cancan
-  
+  before_filter :authorize, :only => [:admin_index, :director_index, :update_standings, :save_standings, :edit, :update, :destroy ]
+
   has_scope :page, :default => 1
 
   def index
-    #@schedules = Schedule.all
     @leagues = League.all
-    #@teams = @leagues.team
   end
   
   def admin_index
@@ -26,7 +24,6 @@ class SchedulesController < InheritedResources::Base
   end
 
   def show
-    #@schedule = Schedule.find(params[:id])
     # Show by league id
     @league = League.find(params[:id])
     @leagues = League.all
@@ -59,6 +56,9 @@ class SchedulesController < InheritedResources::Base
 
   def edit
     @schedule = Schedule.find(params[:id])
+    if current_user.director?
+      @teams = Team.find_all_by_league_id(current_user.league.id)
+    end
   end
 
   def update
@@ -109,5 +109,18 @@ class SchedulesController < InheritedResources::Base
       'admin'
     end
   end
+  
+  def authorize
+    @schedule = Schedule.find(params[:id])
+    @league = @schedule.league
+    
+    if current_user.webmaster?
+    else
+      if(@league.director_id != current_user.id)
+        redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+      end
+    end
+  end
+  
 
 end

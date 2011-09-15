@@ -1,11 +1,17 @@
 class RostersController < ApplicationController
   layout :choose_layout
   
-  load_and_authorize_resource #cancan
   before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authorize, :only => [:admin_index, :edit, :update, :destroy ]
+  
+  has_scope :page, :default => 1
   
   def index
     @team = Team.find(params[:team_id])
+  end
+  
+  def admin_index
+    @rosters = Roster.page(params[:page]).per(25)
   end
   
   def show
@@ -52,5 +58,27 @@ class RostersController < ApplicationController
       'admin'
     end
   end
+  
+  def authorize
+    
+    if current_user.webmaster?
+    else
+      @roster = Roster.find(params[:id])
+      @team = @roster.team
+      
+      if current_user.manager?
+        if(@team.manager_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid Team Manager"
+        end
+      else 
+        @league = @team.league
+        if(@league.director_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+        end
+      end
+      
+    end
+  end
+  
   
 end

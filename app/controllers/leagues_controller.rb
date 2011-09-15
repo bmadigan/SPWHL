@@ -1,8 +1,7 @@
 class LeaguesController < ApplicationController
   
-  load_and_authorize_resource #cancan
-  
   before_filter :authenticate_user!, :except => [:show, :index, :standings, :rosters]
+  before_filter :authorize, :only => [:admin_index, :admin_standings, :edit, :update, :destroy ]
   
   layout :choose_layout
   
@@ -88,6 +87,16 @@ class LeaguesController < ApplicationController
       'application'
     else
       'admin'
+    end
+  end
+  
+  def authorize
+    if current_user.webmaster?      
+    else
+      @league = League.find(params[:id])
+      if(@league.director_id != current_user.id)
+        redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+      end
     end
   end
   

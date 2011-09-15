@@ -7,7 +7,7 @@ class Schedule < ActiveRecord::Base
   belongs_to :hometeam, :foreign_key => 'home_team_id', :class_name => 'Team'
   belongs_to :awayteam, :foreign_key => 'away_team_id', :class_name => 'Team'
   
-  attr_accessible :league_id, :arena, :home_team_id, :away_team_id, :is_game, :is_draft_game, :scheduled_date, :is_change, :home_team_score, :away_team_score, :set_standings
+  attr_accessible :league_id, :arena, :home_team_id, :away_team_id, :is_game, :is_draft_game, :scheduled_date, :is_change, :home_team_score, :away_team_score, :set_standings, :custom_text
   
   define_easy_dates do  
       format_for :scheduled_date, :format => "%B %e, %Y %I:%M%p"
