@@ -2,9 +2,10 @@ class UsersController < ApplicationController
   layout 'admin'
  
   before_filter :authenticate_user!
+  has_scope :page, :default => 1
   
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(15)
   end
   
   def new
