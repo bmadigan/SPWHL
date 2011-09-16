@@ -114,13 +114,22 @@ class SchedulesController < ApplicationController
   def authorize
     if current_user.webmaster?
     else
-      # @schedule = Schedule.find(params[:id])
-      # @league = @schedule.league
-      @league = League.find(params[:id])
       
-      if(@league.director_id != current_user.id)
-        redirect_to root_url, :flash => "Authorization Failure. Invalid League Director"
+      if action_name == 'director_index'
+        @league = League.find(params[:id])
+        if(@league.director_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+        end
       end
+      
+      if action_name == 'edit'
+        @schedule = Schedule.find(params[:id])
+        @league = @schedule.league
+        if(@league.director_id != current_user.id)
+          redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+        end
+      end
+
     end
   end
   
