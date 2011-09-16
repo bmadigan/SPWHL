@@ -39,7 +39,7 @@
       <td><%= schedule.formatted_scheduled_date %></td>
 
 			<td><%= button_to "E", edit_schedule_path(schedule.id), :method => :get %></td>
-			<td><%= button_to "X", schedule_path(schedule.id), :method => :delete, :confirm => "Are you sure?" %></td>
+			<td><%= button_to "X", schedule_path(schedule.id), :confirm => "Are you sure?", :method => :delete%></td>
 
     </tr>
   <% end %>

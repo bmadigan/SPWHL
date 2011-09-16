@@ -74,7 +74,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    redirect_to schedules_url, :notice => "Successfully destroyed schedule."
+    redirect_to schedule_admin_path, :notice => "Successfully destroyed schedule."
   end
   
   def update_standings
@@ -112,13 +112,14 @@ class SchedulesController < ApplicationController
   end
   
   def authorize
-    @schedule = Schedule.find(params[:id])
-    @league = @schedule.league
-    
     if current_user.webmaster?
     else
+      # @schedule = Schedule.find(params[:id])
+      # @league = @schedule.league
+      @league = League.find(params[:id])
+      
       if(@league.director_id != current_user.id)
-        redirect_to root_url, :notice => "Authorization Failure. Invalid League Director"
+        redirect_to root_url, :flash => "Authorization Failure. Invalid League Director"
       end
     end
   end
