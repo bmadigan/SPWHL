@@ -4,7 +4,7 @@ gem 'rails', '3.0.7'
 
 group :production do
   gem 'pg'
-	gem 'exception_notification'
+	#gem 'exception_notification'
 end
 
 group :development, :test do
