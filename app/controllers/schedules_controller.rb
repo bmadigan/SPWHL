@@ -65,7 +65,11 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update_attributes(params[:schedule])
-      redirect_to schedule_admin_path, :notice  => "Successfully updated schedule."
+      if current_user.webmaster?
+        redirect_to schedule_admin_path, :notice  => "Successfully updated schedule."
+      else
+        redirect_to schedule_director_admin_path(@schedule.league_id), :notice  => "Successfully updated schedule."
+      end
     else
       render :action => 'edit'
     end

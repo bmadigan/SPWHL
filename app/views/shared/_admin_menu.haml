@@ -11,6 +11,7 @@
   -if current_user.manager?
     %li= link_to "Team Page", edit_team_path(@team)
     %li= link_to "Team Schedule", team_schedules_path(@schedule)
+    %li= link_to "Team Roster", team_rosters_admin_path(@team)
 
   -if current_user.director?
     %li= link_to "League Standings", admin_league_standings_path(current_user.league)

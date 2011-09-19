@@ -19,6 +19,9 @@ class RostersController < ApplicationController
   end
 
   def new
+    if current_user.manager?
+      @team = Team.find_by_manager_id(current_user)
+    end
     @roster = Roster.new
   end
 

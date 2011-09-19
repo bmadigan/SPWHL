@@ -35,6 +35,17 @@
 			<p><%= link_to "Click To Manage", team_schedules_path(@team) %></p>
 		</td>
 	</tr>
+	<tr>
+		<td width="100"><img src="/images/admin/ico-jersey.png"></td>
+		<td width="300" valign="top">
+			<h3>Update Team Rosters</h3>
+			<p>This is where you can update your Team Roster information.</p>
+			<p><%= link_to "Click To Manage", team_rosters_admin_path(@team) %></p>
+		</td>
+		<td width="100"></td>
+		<td width="300" valign="top">
+		</td>
+	</tr>
 	</table>
 <% end %>
 
@@ -84,7 +95,7 @@
   <%= link_to "Schedules", schedules_path %><br>
   <%= link_to "Pages", page_admin_path %><br>
 	<%= link_to "News Articles", article_admin_path %><br>
-	<%= link_to "User Accounts", users_path %><br>
+	<%= link_to "User Accounts", users_path %><br><br>
 
 <% end %>
 
@@ -94,7 +105,7 @@
 	<td width="300" valign="top">
 		<h3>Change Password</h3>
 		<p>Need to change your password? Do so here:
-			<br/><%= link_to "Click To Manage", edit_password_path(current_user), :method => :get %></p>
+			<br/><%= link_to "Change Password", edit_password_path(current_user), :method => :get %></p>
 	</td>
 </tr>
 </table>
