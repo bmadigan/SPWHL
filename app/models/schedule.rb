@@ -26,7 +26,8 @@ class Schedule < ActiveRecord::Base
   #scope :not_in_standings, lambda { where("DATE(scheduled_date) <= ? AND league_id = ? AND set_standings != ?", Date.today, @league.id, false) }
   
   def self.todays_games
-    where("DATE(scheduled_date) = ?", Date.today).order("TIME(scheduled_date) ASC")
+    #where("DATE(scheduled_date) = ?", Date.today).order("TIME(scheduled_date) ASC") #sqllite
+    where("DATE(scheduled_date) = ?", Date.today).order("scheduled_date ASC")
   end
   
   def self.not_in_standings(league)
