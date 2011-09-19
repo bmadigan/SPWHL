@@ -6,6 +6,7 @@ class Page < ActiveRecord::Base
   has_many :assets
   accepts_nested_attributes_for :assets, :allow_destroy => true
   
-  
+  validates :page_title, :presence => true
+  validates :page_content, :presence => true
   
 end

@@ -4,4 +4,6 @@ class League < ActiveRecord::Base
   
   attr_accessible :name, :season_id, :is_house_league, :director_id, :page_content, :short_name
   
+  validates :name, :presence => true
+  
 end

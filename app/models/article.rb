@@ -4,6 +4,9 @@ class Article < ActiveRecord::Base
   has_many :assets
   accepts_nested_attributes_for :assets, :allow_destroy => true
   
+  validates :article_title, :presence => true
+  validates :article_content, :presence => true
+  
   default_scope :order => "created_at DESC"
   
   define_easy_dates do

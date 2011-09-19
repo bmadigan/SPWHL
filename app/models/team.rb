@@ -9,6 +9,10 @@ class Team < ActiveRecord::Base
    
   attr_accessible :name, :league_id, :manager_id, :team_page_content, :goals_for, :goals_against, :wins, :loses, :ties
   
+  validates :name, :presence => true
+  validates :manager_id, :presence => true
+  validates :league_id, :presence => true
+  
   def upcoming_league_schedule                                        
     Schedule.where("DATE(scheduled_date) >= ? AND (home_team_id = ? OR away_team_id = ?)", Date.today, id, id).order("scheduled_date ASC").limit(3)
   end                                                                 

@@ -9,6 +9,9 @@ class Schedule < ActiveRecord::Base
   
   attr_accessible :league_id, :arena, :home_team_id, :away_team_id, :is_game, :is_draft_game, :scheduled_date, :is_change, :home_team_score, :away_team_score, :set_standings, :custom_text
   
+  validates :league_id, :presence => true
+  validates :home_team_id, :presence => true
+  
   define_easy_dates do  
       format_for :scheduled_date, :format => "%B %e, %Y %I:%M%p"
       format_for :scheduled_date, :format => "%B %e, %Y", :as => "scheduled_day"

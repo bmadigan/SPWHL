@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :name, :email, :password, :password_confirmation, :remember_me, :role_type
   
+  validates :username, :presence => true
+  validates :name, :presence => true
+  validates :email, :presence => true
+  validates :password, :presence => true
+  
   has_one :league, :foreign_key => 'director_id', :class_name => 'League'
   has_one :team, :foreign_key => 'manager_id', :class_name => 'Team'
   
