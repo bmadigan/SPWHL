@@ -1,0 +1,19 @@
+<% title "Update Your Password" %>
+
+<div class="form_div">
+<%= form_for(@user, :as => @user, :url => password_path, :html => { :method => :put }) do |f| %>
+
+<p>
+ <%= f.label :current_password %>
+ <br />
+ <%= f.password_field :current_password %></p>
+
+  <p><%= f.label :password, "New password" %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Change my password" %></p>
+  <%end%>
+</div>

@@ -87,3 +87,14 @@
 	<%= link_to "User Accounts", users_path %><br>
 
 <% end %>
+
+<table border="0" class="dashboard" cellpadding="8">
+<tr>
+	<td width="100"><img src="/images/lock.png" width="90"></td>
+	<td width="300" valign="top">
+		<h3>Change Password</h3>
+		<p>Need to change your password? Do so here:
+			<br/><%= link_to "Click To Manage", edit_password_path(current_user), :method => :get %></p>
+	</td>
+</tr>
+</table>

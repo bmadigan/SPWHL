@@ -51,8 +51,12 @@ Soopeewee::Application.routes.draw do
 
   # devise_for :users, :path_names => { :sign_up => "register" }
   # resources :users
-  devise_for :users, :path_prefix => 'd'
+  
+  devise_for :users, :controllers => {:passwords => "passwords"}, :path_prefix => 'd'
+  
+  resources :passwords
   resources :users
+  
   
   get "home/index"
   root :to => "home#index"
