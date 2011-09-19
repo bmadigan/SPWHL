@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   belongs_to :league
   has_many :rosters, :dependent => :destroy
-  has_many :schedules, :dependent => :destroy
+  has_many :schedules
   belongs_to :manager, :class_name => "User", :foreign_key => "manager_id"
   
   has_many :home_matches, :foreign_key => :home_team_id, :class_name => :schedules
