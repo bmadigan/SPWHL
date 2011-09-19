@@ -4,7 +4,9 @@ gem 'rails', '3.0.7'
 
 group :production do
   gem 'pg'
+	gem 'exception_notification'
 end
+
 group :development, :test do
   gem 'sqlite3'
 end
@@ -25,7 +27,6 @@ gem 'paperclip'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'kaminari'
-
 
 gem "nifty-generators", :group => :development
 

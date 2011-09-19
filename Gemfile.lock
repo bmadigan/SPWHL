@@ -40,6 +40,8 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     event-calendar (2.3.3)
+    exception_notification (2.5.2)
+      actionmailer (>= 3.0.4)
     haml (3.1.2)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -110,6 +112,7 @@ DEPENDENCIES
   devise
   easy_dates
   event-calendar
+  exception_notification
   haml (>= 3.0.0)
   haml-rails
   has_scope
