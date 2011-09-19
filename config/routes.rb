@@ -57,7 +57,6 @@ Soopeewee::Application.routes.draw do
   resources :passwords
   resources :users
   
-  
   get "home/index"
   root :to => "home#index"
   
