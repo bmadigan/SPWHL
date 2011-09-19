@@ -10,19 +10,19 @@ class Team < ActiveRecord::Base
   attr_accessible :name, :league_id, :manager_id, :team_page_content, :goals_for, :goals_against, :wins, :loses, :ties
   
   def upcoming_league_schedule                                        
-    Schedule.where("DATE(scheduled_date) >= ? AND (home_team_id = ? OR away_team_id = ?)", Date.today, id, id).order("Time(scheduled_date) ASC").limit(3)
+    Schedule.where("DATE(scheduled_date) >= ? AND (home_team_id = ? OR away_team_id = ?)", Date.today, id, id).order("scheduled_date ASC").limit(3)
   end                                                                 
   
   def upcoming_team_schedule
-    TeamSchedule.where("DATE(event_date) >= ? AND team_id = ?", Date.today, id).order("Time(event_date) ASC").limit(3)
+    TeamSchedule.where("DATE(event_date) >= ? AND team_id = ?", Date.today, id).order("event_date ASC").limit(3)
   end
   
   def full_schedule
-    Schedule.where("home_team_id = ? OR away_team_id = ?", id, id).order("Time(scheduled_date) ASC")
+    Schedule.where("home_team_id = ? OR away_team_id = ?", id, id).order("scheduled_date ASC")
   end
   
   def full_team_schedule
-    TeamSchedule.where("DATE(event_date) >= ? AND team_id = ?", Date.today, id).order("Time(event_date) ASC")
+    TeamSchedule.where("DATE(event_date) >= ? AND team_id = ?", Date.today, id).order("event_date ASC")
   end
   
   def self.total_pts 
