@@ -14,8 +14,9 @@
 			<td width="115"><%= user.username %></td>
   		<td width="210"><%= user.email %></td>
 			<td width="140"><%= user.role_type %></td>
-      <td><%= link_to "Edit", edit_user_path(user) %></td>
-      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+			
+			<td><%= button_to "E", edit_user_path(user), :method => :get %></td>
+			<td><%= button_to "X", user, :confirm => "Are you sure?", :method => :delete%></td>
     </tr>
   <% end %>
 </table>
