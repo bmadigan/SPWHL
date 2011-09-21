@@ -4,7 +4,9 @@ class League < ActiveRecord::Base
   
   has_many :teams
   
-  attr_accessible :name, :season_id, :is_house_league, :director_id, :page_content, :short_name
+  attr_accessible :name, :season_id, :is_house_league, :director_id, :page_content, :short_name, :display_order
+  
+  default_scope :order => "display_order"
   
   validates :name, :presence => true
   

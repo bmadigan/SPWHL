@@ -10,6 +10,7 @@
     = f.association :season, :disabled => true, :include_blank => false
     = f.association :director
     = f.input :is_house_league
+    = f.input :display_order, :hint => 'Used for ordering on website. T.Thumb is 0, Tyke is 1, etc...'
   - else
 
   = f.input :page_content,  :input_html => { :class => 'mceEditor' }, :as => :text, :label => 'Enter the content for this leagues homepage'

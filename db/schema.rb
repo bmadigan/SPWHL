@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921132947) do
+ActiveRecord::Schema.define(:version => 20110921144114) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110921132947) do
     t.integer  "director_id"
     t.text     "page_content"
     t.string   "short_name"
+    t.integer  "display_order",   :default => 0
   end
 
   create_table "mediafiles", :force => true do |t|
