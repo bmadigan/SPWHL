@@ -8,7 +8,7 @@
     = f.input :short_name, :label => 'Short Name'
     = f.hint 'Eg. Abbreviate NOVC, ATMB or PWA'
     = f.association :season, :disabled => true, :include_blank => false
-    = f.input :director_id
+    = f.association :director
     = f.input :is_house_league
   - else
 
