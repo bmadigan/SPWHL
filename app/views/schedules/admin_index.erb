@@ -2,11 +2,10 @@
 
 <div class='admin-bar'>
 	<div class='left'>
-		<% form_for :schedule, :url => { :action => "admin_index" } do |f| %>
+		<%= form_for :schedule, :url => { :action => "admin_index" } do |f| %>
 		  <%= select_tag :league_id, options_from_collection_for_select(@leagues, :id, :name),
 		  { :onchange => "this.form.submit();", :include_blank => "– Sort By League –"} %>
 		<% end %>
-
 
 	</div>
 	<div class='right'>

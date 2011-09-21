@@ -33,19 +33,19 @@ class LeaguesController < ApplicationController
   
   def standings
     @league = League.find(params[:id])
-    @teams = @league.teams
+    @teams = @league.teams.official
     @steams = Team.select_by_standings(@league.id)
   end
   
   def rosters
     @league = League.find(params[:id])
-    @teams = @league.teams
+    @teams = @league.teams.official
   end
   
   def show
     @league = League.find(params[:id])
     # Get the team listings for this leage.
-    @teams = @league.teams
+    @teams = @league.teams.official
   end
 
   def new

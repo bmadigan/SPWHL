@@ -7,6 +7,7 @@
   -if current_user.webmaster?
     = f.association :league, :include_blank => false
     = f.association :manager
+    = f.input :is_official, :label => 'Official League Team', :as => :radio, :checked => true, :hint => 'Select No if Wildcats or Sault Major'
     
   = f.input :team_page_content,  :input_html => { :class => 'mceEditor' }, :as => :text, :label => 'Enter the content for this teams homepage'
   

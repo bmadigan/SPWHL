@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914113039) do
+ActiveRecord::Schema.define(:version => 20110921132947) do
 
   create_table "arenas", :force => true do |t|
     t.string   "arena_name"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20110914113039) do
     t.integer  "wins",              :default => 0
     t.integer  "loses",             :default => 0
     t.integer  "ties",              :default => 0
+    t.boolean  "is_official",       :default => true
   end
 
   create_table "tournaments", :force => true do |t|

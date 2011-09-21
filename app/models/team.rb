@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   has_many :home_matches, :foreign_key => :home_team_id, :class_name => :schedules
   has_many :away_matches, :foreign_key => :away_team_id, :class_name => :schedules
    
-  attr_accessible :name, :league_id, :manager_id, :team_page_content, :goals_for, :goals_against, :wins, :loses, :ties
+  attr_accessible :name, :league_id, :manager_id, :team_page_content, :goals_for, :goals_against, :wins, :loses, :ties, :is_official
   
   validates :name, :presence => true
   validates :manager_id, :presence => true
@@ -36,9 +36,13 @@ class Team < ActiveRecord::Base
     pts
   end
   
+  def self.official
+    Team.where("is_official = ?", true)
+  end
+  
   def self.select_by_standings(league)
     #select (*, ((wins * 2) +ties) as total_pts).where("league_id = ?", league.id).order("total_pts DESC")
-    self.connection.execute(sanitize_sql(["SELECT name, goals_for, goals_against, wins, loses, ties, ((wins * 2) + ties) as total_pts, (wins + loses + ties) as gp FROM teams WHERE league_id = ? ORDER BY total_pts DESC", league]))
+    self.connection.execute(sanitize_sql(["SELECT name, goals_for, goals_against, wins, loses, ties, ((wins * 2) + ties) as total_pts, (wins + loses + ties) as gp FROM teams WHERE league_id = ? AND is_official = ? ORDER BY total_pts DESC", league, true]))
   end
   
   def update_team_standings(team_score, opp_score)
