@@ -20,6 +20,9 @@
 <div class="grid_5 article-side">
 	<h4>SUB MENU</h4>
 	<hr>
+		<% if @page.parent_id == 1 || @page.id == 1 %>
+			&raquo; <a href="/home/calendar">Calendar</a><br/>
+		<% end %>
 	  <% for sub in @submenu %>
 	    &raquo; <%= link_to sub.page_title, sub %><br/>
 	  <% end %>
