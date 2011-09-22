@@ -7,7 +7,7 @@
 	<h1><%= @page.page_title %></h1>
 	
 	<div class="page-content">
-		<%= sanitize(@page.page_content) %>
+		<%= sanitize @page.page_content, :tags => %w(table tr th td p h1 h2 h3 h4 font-size div ul ol li span strong em), :attributes => %w(id class style) %>
 	</div>
 
 	<% for asset in @assets %>
