@@ -58,6 +58,7 @@ Soopeewee::Application.routes.draw do
   resources :users
   
   get "home/index"
+  get "home/calendar"
   root :to => "home#index"
   
 end

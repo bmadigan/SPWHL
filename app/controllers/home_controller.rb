@@ -13,5 +13,9 @@ class HomeController < ApplicationController
     @schedules = Schedule.todays_games
     
   end
+  
+  def calendar
+    
+  end
 
 end
