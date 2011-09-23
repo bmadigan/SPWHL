@@ -27,8 +27,8 @@ class SchedulesController < ApplicationController
     # Show by league id
     @league = League.find(params[:id])
     @leagues = League.all
-    #@schedules = Schedule.where("league_id = ?", params[:id]) #shows all
-    @schedules = Schedule.where("league_id = ? AND scheduled_date >= ?", params[:id], Date.today)
+    @schedules = Schedule.where("league_id = ?", params[:id]) #shows all
+    #@schedules = Schedule.where("league_id = ? AND scheduled_date >= ?", params[:id], Date.today) #shows upcoming
     
     @schedule_days = @schedules.group_by { |s| s.scheduled_date.beginning_of_day } 
   end
