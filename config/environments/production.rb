@@ -21,9 +21,9 @@ Soopeewee::Application.configure do
   # -----------------------------
   # Added by Brad Madigan
   # Will generate sql to log for debuggin
-  # config.logger = Logger.new(STDOUT)
+   config.logger = Logger.new(STDOUT)
   # See everything in the log (default is :info)
-  config.log_level = :debug
+  #config.log_level = :debug
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
