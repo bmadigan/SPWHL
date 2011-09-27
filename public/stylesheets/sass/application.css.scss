@@ -10,6 +10,9 @@ $footer-text-color:#999;
 $side-color: #226498;
 $side-text-light: #8dafca;
 
+$tbl-border-color: #b3b3b3;
+$tbl-cellpadding: 6px;
+
 body {
   margin:0px auto;
   background-color: $page-bg-color;
@@ -46,6 +49,11 @@ a { color: #111; }
 		.general-tbl {
 			border:1px solid #888;
 			padding:6px;
+		}
+		
+		table {
+			border:1px solid $tbl-border-color;
+			td { border: 1px solid $tbl-border-color; padding:$tbl-cellpadding; }
 		}
 	}
 	h4 { font-size:1.1em; margin:2px 0; color:#666; }
@@ -206,8 +214,8 @@ a { color: #111; }
 }
 .asset {
 	margin:6px 15px 2px 0;
-	padding:6px 4px;
-	border-left:4px solid #a7a7a7;
+	padding:6px 4px 6px 12px;
+	border-left:4px solid #666;
 	background:#fff;
 	color:#777;
 	font-size:0.82em;

@@ -53,6 +53,11 @@ a img {
     #container .page-content .general-tbl {
       border: 1px solid #888;
       padding: 6px; }
+    #container .page-content table {
+      border: 1px solid #b3b3b3; }
+      #container .page-content table td {
+        border: 1px solid #b3b3b3;
+        padding: 6px; }
   #container h4 {
     font-size: 1.1em;
     margin: 2px 0;
@@ -330,8 +335,8 @@ a img {
 
 .asset {
   margin: 6px 15px 2px 0;
-  padding: 6px 4px;
-  border: 1px solid #c9c9c9;
+  padding: 6px 4px 6px 12px;
+  border-left: 4px solid #666;
   background: #fff;
   color: #777;
   font-size: 0.82em; }
