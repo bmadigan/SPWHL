@@ -1,0 +1,12 @@
+development:
+  bucket: spw_hockey
+  access_key_id: AKIAJTZ6NODUKG5AGXFQ
+  secret_access_key: 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
+test:
+  bucket: bucket-test
+  access_key_id: AKIAJTZ6NODUKG5AGXFQ
+  secret_access_key: xxx
+production:
+  bucket: spw_hockey
+  access_key_id: AKIAJTZ6NODUKG5AGXFQ
+  secret_access_key: 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

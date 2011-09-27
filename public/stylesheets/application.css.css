@@ -50,6 +50,9 @@ a img {
     color: #444; }
     #container .page-content a {
       color: #333; }
+    #container .page-content .general-tbl {
+      border: 1px solid #888;
+      padding: 6px; }
   #container h4 {
     font-size: 1.1em;
     margin: 2px 0;

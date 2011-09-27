@@ -23,6 +23,7 @@ gem 'event-calendar', :require => 'event_calendar'
 
 gem 'tiny_mce'
 gem 'paperclip'
+gem 'aws-s3'
 
 gem 'inherited_resources'
 gem 'has_scope'
