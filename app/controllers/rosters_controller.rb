@@ -50,7 +50,11 @@ class RostersController < ApplicationController
   def destroy
     @roster = Roster.find(params[:id])
     @roster.destroy
-    redirect_to rosters_url, :notice => "Successfully destroyed roster."
+    if current_user.webmaster?
+      redirect_to rosters_admin_path, :notice => "Successfully destroyed roster."
+    else
+      redirect_to admin_index_path, :notice  => "Successfully destroyed roster."
+    end
   end
   
   private
