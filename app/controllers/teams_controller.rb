@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
       @league = League.find(params[:league_id])
       @teams = @league.teams
     else
-      @teams = Team.all
+      @teams = Team.order('name').all
     end
 
   end

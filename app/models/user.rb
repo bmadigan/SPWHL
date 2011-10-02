@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_one :league, :foreign_key => 'director_id', :class_name => 'League'
   has_one :team, :foreign_key => 'manager_id', :class_name => 'Team'
   
+  default_scope :order => "name"
+  
   def manager?
     if role_type == 'Manager'
       return true
