@@ -74,9 +74,9 @@
 				<% else %>
 					<td>PRACT</td>
 				<% end %>
-	      <td><%= schedule.hometeam.name %></td>
+	      <td><%= truncate(schedule.hometeam.name, :length => 17) %></td>
 				<td><span class="vs">VS</span></td>
-				<td><%= schedule.awayteam.name %></td>
+				<td><%= truncate(schedule.awayteam.name, :length => 17) %></td>
 	      <td><strong><%= schedule.scheduled_time %></strong></td>
 				<td><%= schedule.arena %></td>
 	    </tr>

@@ -30,8 +30,8 @@
 						PRACT
 					<% end %>
 				</td>
-				<td <% if(schedule.is_change)%> class="change" <%end%>><%= truncate(schedule.hometeam.name, :length => 18) %></td>
-				<td <% if(schedule.is_change)%> class="change" <%end%>><%= truncate(schedule.awayteam.name, :length => 18) %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= truncate(schedule.hometeam.name, :length => 23) %></td>
+				<td <% if(schedule.is_change)%> class="change" <%end%>><%= truncate(schedule.awayteam.name, :length => 23) %></td>
 				<td <% if(schedule.is_change)%> class="change" <%end%>><%= schedule.arena %></td>
 				<td <% if(schedule.is_change)%> class="change" <%end%>>
 					<% unless schedule.custom_text.nil? %>
