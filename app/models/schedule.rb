@@ -12,6 +12,9 @@ class Schedule < ActiveRecord::Base
   validates :league_id, :presence => true
   validates :home_team_id, :presence => true
   
+  # validates_inclusion_of :home_team_score, :in => 0..90, :message => "Must be greater than 0"
+  # validates_inclusion_of :away_team_score, :in => 0..90, :message => "Must be greater than 0"
+   
   define_easy_dates do  
       format_for :scheduled_date, :format => "%B %e, %Y %I:%M%p"
       format_for :scheduled_date, :format => "%B %e, %Y", :as => "scheduled_day"

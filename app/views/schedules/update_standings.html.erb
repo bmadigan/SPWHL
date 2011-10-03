@@ -1,11 +1,12 @@
 <% title "Update Game Standings" %>
 
 <p>Simply type in the scores and click Save!</p>
+<p style="color:orange; font-weight:bold;">YOU MUST ENTER A VALID NUMBER! CANNOT BE BLANK! ENTER 0 IF A SHUTOUT</p>
 
 
 <h2>Game Date: <%= @schedule.formatted_scheduled_date %></h2>
 
-<%= form_tag save_standings_path(@schedule), :method => :put do %>
+<%= form_tag save_standings_path(@schedule), :validate => true, :method => :put do %>
 <table border="0">
 <tr>
 	<td width="400" valign="top">
