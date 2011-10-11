@@ -1,0 +1,10 @@
+= simple_form_for(@announcement) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :message
+    = f.input :start_at
+    = f.input :end_at
+
+  .actions
+    = f.button :submit

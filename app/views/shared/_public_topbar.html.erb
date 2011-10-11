@@ -1,3 +1,12 @@
+<% unless current_announcements.empty? %>
+	<div class="container_24" id="annoucements">
+		ANNOUNCEMENT: &nbsp; 
+		<% for announcement in current_announcements %>
+	    <%=h announcement.message %>
+	  <% end %>
+	</div>
+<% end %>
+
 <div class="container_24" id="topbar">
 	<div class="grid_7">
 		<a href="/"><img src="/images/spw-logo-100w.png" style="margin:6px 0 0 32px;"></a>

@@ -20,6 +20,14 @@ a img {
   height: 110px;
   background: url("/images/bkg-header-bar.jpg"); }
 
+#annoucements {
+  background-color: #698b22;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.88em; }
+
 #flash_notice, #flash_alert {
   margin: 0px;
   text-align: center;

@@ -1,7 +1,5 @@
 Soopeewee::Application.routes.draw do
 
-  resources :mediafiles
-
   get "admin/index"
 
   #match '/schedules(/:year(/:month))' => 'schedules#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -19,6 +17,10 @@ Soopeewee::Application.routes.draw do
   resources :pages
   resources :articles
   resources :team_schedules
+  
+  resources :announcements
+  resources :mediafiles
+  
   
   get "teams/get_select_teams"
   

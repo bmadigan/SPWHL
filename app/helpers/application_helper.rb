@@ -16,4 +16,8 @@ module ApplicationHelper
     date.strftime("%A %b %d")
   end
   
+  def current_announcements
+    @current_announcements ||= Announcement.current_accouncements
+  end
+  
 end

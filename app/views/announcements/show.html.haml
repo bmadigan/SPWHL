@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Message:
+  = @announcement.message
+%p
+  %b Start at:
+  = @announcement.start_at
+%p
+  %b End at:
+  = @announcement.end_at
+
+= link_to 'Edit', edit_announcement_path(@announcement)
+\|
+= link_to 'Back', announcements_path

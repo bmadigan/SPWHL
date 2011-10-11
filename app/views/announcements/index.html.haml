@@ -1,0 +1,21 @@
+%h1 Listing announcements
+
+%table
+  %tr
+    %th Message
+    %th Start at
+    %th End at
+    %th
+    %th
+
+  - @announcements.each do |announcement|
+    %tr
+      %td= announcement.message
+      %td= announcement.start_at
+      %td= announcement.end_at
+      %td= button_to 'E', edit_announcement_path(announcement), :method => :get
+      %td= button_to 'X', announcement, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Announcement', new_announcement_path
