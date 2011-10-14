@@ -9,7 +9,7 @@
   </tr>
   <% for roster in @team.rosters %>
     <tr>
-			<td><%= roster.position %></td>
+			<td><%= roster.jersey_number %></td>
       <td><%= roster.full_name %></td>
       <td><%= roster.position %></td>
 			<td><%= button_to "E", edit_roster_path(roster.id), :method => :get %></td>
