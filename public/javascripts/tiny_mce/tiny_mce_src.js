@@ -8,6 +8,8 @@
 		minorVersion : '3.6',
 
 		releaseDate : '2010-05-20',
+		
+		extended_valid_elements : "iframe[src|class|width|height|name|align]",
 
 		_init : function() {
 			var t = this, d = document, na = navigator, ua = na.userAgent, i, nl, n, base, p, v;
@@ -27,6 +29,8 @@
 			t.isAir = /adobeair/i.test(ua);
 
 			t.isIDevice = /(iPad|iPhone)/.test(ua);
+			
+			
 
 			// TinyMCE .NET webcontrol might be setting the values for TinyMCE
 			if (win.tinyMCEPreInit) {
