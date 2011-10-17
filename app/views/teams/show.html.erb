@@ -7,7 +7,7 @@
 	<h1><%= @team.name %></h1>
 	
 	<div class="page-content">
-		<%= sanitize @team.team_page_content, :tags => %w(table tr th td p h1 h2 h3 h4 div ul ol li span strong em a li img hr br ), :attributes => %w(id class style width cellpadding cellspacing border src alt href font-size ) %>
+		<%= sanitize @team.team_page_content, :tags => %w(table tr th td p h1 h2 h3 h4 div ul ol li span b iframe strong em a li img hr br ), :attributes => %w(id class style width height frameborder scrolling cellpadding cellspacing border src alt href font-size ) %>
 	</div>
 
 </div>
