@@ -47,6 +47,7 @@ Soopeewee::Application.routes.draw do
   match '/leagues/:id/rosters' => "leagues#rosters", :as => 'league_rosters', :method => 'read'
   match '/teams/:id/full_schedule' => "teams#full_schedule", :as => 'team_full_schedule'
   match '/teams/:id/roster' => 'teams#roster', :as => 'team_roster'
+  match '/teams/:id/calendar' => 'teams#calendar', :as => 'team_calendar'
   
   #match '/pages/index/:id' => 'pages#index', :as => 'pages'
   

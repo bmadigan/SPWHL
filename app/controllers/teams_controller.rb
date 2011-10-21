@@ -43,6 +43,20 @@ class TeamsController < ApplicationController
     @schedule_months = @full_schedule.group_by { |s| s.scheduled_date.beginning_of_month } 
   end
   
+  def calendar
+    @team = Team.find(params[:id])
+    
+    @league_schedule = @team.upcoming_league_schedule
+    @team_schedule = @team.upcoming_team_schedule
+    
+    @full_schedule = @team.full_schedule.to_a
+    @full_team_schedule = @team.full_team_schedule.to_a
+    
+    # This is for the calendar
+    @date = params[:month] ? Date.parse(params[:month].gsub('-', '/')) : Date.today
+    
+  end
+  
   def roster
     @team = Team.find(params[:id])
     @league_schedule = @team.upcoming_league_schedule
@@ -94,7 +108,7 @@ class TeamsController < ApplicationController
   
   private
   def choose_layout
-    if ['show', 'full_schedule', 'roster'].include? action_name
+    if ['show', 'full_schedule', 'roster', 'calendar'].include? action_name
       'application'
     else
       'admin'

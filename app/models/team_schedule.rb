@@ -8,6 +8,7 @@ class TeamSchedule < ActiveRecord::Base
   define_easy_dates do  
       format_for :event_date, :format => "%B %e, %Y %I:%M%p"
       format_for :event_date, :format => "%B %e, %Y", :as => "scheduled_day"
+      format_for :event_date, :format => "%m-%d", :as => "scheduled_calendar"
       format_for :event_date, :format => "%I:%M%p", :as => "scheduled_time"
   end
   

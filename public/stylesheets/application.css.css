@@ -354,6 +354,48 @@ a img {
   .asset a:hover {
     color: #888; }
 
+#team-calendar table {
+  width: 100%; }
+#team-calendar td, #team-calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+  padding: 4px;
+  border: 1px solid #e8e8e8; }
+#team-calendar th {
+  background-color: #555;
+  color: #fff; }
+#team-calendar td {
+  background: #fff;
+  color: #777;
+  height: 100px;
+  width: 14%;
+  vertical-align: top; }
+#team-calendar .notmonth {
+  color: #ccc; }
+  #team-calendar .notmonth ul li {
+    color: #FFCC99; }
+#team-calendar #month {
+  margin: 0px;
+  padding: 10px 0;
+  text-align: center; }
+  #team-calendar #month a, #team-calendar #month a:hover {
+    text-decoration: none;
+    padding: 0 10px;
+    color: #999; }
+#team-calendar .today {
+  background-color: #D7F2FF; }
+#team-calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none; }
+#team-calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  color: #CC6633;
+  text-align: center; }
+
 #footer {
   margin: 30px 0; }
   #footer .footer-copy {

@@ -20,6 +20,8 @@ gem "simple_form"
 gem 'event-calendar', :require => 'event_calendar'
 #gem 'cancan'
 #gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+gem "chronic", "~> 0.6.4"
+gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 gem 'tiny_mce'
 gem 'paperclip'
